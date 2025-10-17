@@ -19,18 +19,19 @@
   <meta property="og:site_name" content="Зелёный Дом">
   <meta property="og:title" content="Зелёный Дом — всё для сада и огорода">
   <meta property="og:description" content="Семена, удобрения и химия для вашего сада. Работаем по всему Казахстану!">
-  <meta property="og:image" content="https://yourdomain.kz/images/preview.jpg">
+  <meta property="og:image" content="https://zeldom.kz/images/preview.jpg">
   <meta property="og:url" content="https://zeldom.kz/">
 
   <!-- 🔹 Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Зелёный Дом — всё для сада и огорода">
   <meta name="twitter:description" content="Интернет-магазин семян, удобрений и химии. Доставка по всему Казахстану.">
-  <meta name="twitter:image" content="https://yourdomain.kz/images/preview.jpg">
+  <meta name="twitter:image" content="https://zeldom.kz/images/preview.jpg">
 
-  <!-- 🔹 Иконки -->
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
 
   <!-- 🔹 Канонический URL -->
   <link rel="canonical" href="https://zeldom.kz/">
@@ -41,15 +42,15 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Зелёный Дом",
-    "url": "https://yourdomain.kz/",
-    "logo": "https://yourdomain.kz/images/logo.png",
+    "url": "https://zeldom.kz/",
+    "logo": "https://zeldom.kz/images/logo.png",
     "sameAs": [
       "https://www.instagram.com/yourbrand",
       "https://www.facebook.com/yourbrand"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+7-700-000-0000",
+      "telephone": "8 (747) 095 37 83",
       "contactType": "customer service",
       "areaServed": "KZ",
       "availableLanguage": "Russian"
@@ -57,47 +58,65 @@
   }
   </script>
 
-  <!-- 🔹 Шрифты и стили -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
   <!-- 🔹 CSS -->
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
+  <!-- header -->
 <header class="header">
-  <div class="header__logo">ЗЕЛЕНЫЙ ДОМ</div>
-
-  <button class="header__catalog">
-    <span class="header__catalog-icon">▦</span>
-    Каталог
-  </button>
-
+  <div class="header__logo"><img src="images/logo_header.png" alt="Логотип Зеленый Дом"></div>
+<button class="header__catalog">
+  <span class="header__catalog-icon"></span>
+  Каталог
+</button>
   <div class="header__search">
-    <input type="text" placeholder="Ищите семена или химию?" />
-    <button class="header__search-btn">
-      <svg viewBox="0 0 24 24" class="header__search-icon">
-        <circle cx="11" cy="11" r="8" stroke-width="2" fill="none" stroke="currentColor"></circle>
-        <line x1="17" y1="17" x2="22" y2="22" stroke-width="2" stroke="currentColor"></line>
-      </svg>
-    </button>
+  <input type="text" placeholder="Ищите семена или химию?">
+  <button class="header__search-btn">
+    <svg viewBox="0 0 24 24" class="header__search-icon">
+      <circle cx="11" cy="11" r="8" stroke-width="2" fill="none" stroke="currentColor"></circle>
+      <line x1="17" y1="17" x2="22" y2="22" stroke-width="2" stroke="currentColor"></line>
+    </svg>
+  </button>
   </div>
-
   <nav class="header__nav">
-    <a href="#" class="header__nav-item">Войти</a>
-    <a href="#" class="header__nav-item">Избранное</a>
-    <a href="#" class="header__nav-item">Сравнить</a>
-    <a href="#" class="header__nav-item">Корзина</a>
-  </nav>
+  <a href="#" class="header__nav-item nav_user">
+    <span class="header__nav-icon">
+      <img src="images/user.svg" alt="Вход регистрация Зеленый дом">
+    </span>
+    <span class="header__nav-text">Войти</span>
+  </a>
+
+  <a href="#" class="header__nav-item nav_heart">
+    <span class="header__nav-icon">
+      <img src="images/heart.svg" alt="Избранное">
+    </span>
+    <span class="header__nav-text">Избранное</span>
+  </a>
+
+  <a href="#" class="header__nav-item nav_compare">
+    <span class="header__nav-icon">
+      <img src="images/compare.svg" alt="Сравнить цены товаров Зеленый дом">
+    </span>
+    <span class="header__nav-text">Сравнить</span>
+  </a>
+
+  <a href="#" class="header__nav-item nav_cart">
+    <span class="header__nav-icon">
+      <img src="images/cart.svg" alt="Корзина">
+    </span>
+    <span class="header__nav-text">Корзина</span>
+  </a>
+</nav>
 </header>
 
+<!-- main content -->
 <main>
 	
 </main>
 
+<!-- footer -->
 <footer>
 	
 </footer>
