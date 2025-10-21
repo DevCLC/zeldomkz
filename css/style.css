@@ -8,14 +8,14 @@ INDEX:
     10 - Layout - Header
         10.00 - Header
         10.01 - Logo
-        10.02 - Catalog Button
+        10.02 - Catalog
         10.03 - Search
         10.04 - Navigation
     
     20 - Layout - Container
 
     90 - Responsive
-        90.00 - Tablet
+        90.00 - Laptop
         90.01 - Mobile
     
 
@@ -41,8 +41,16 @@ html {
   padding: 0;
 }
 
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 *, *::before, *::after {
   box-sizing: inherit;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Плавное появление контента при загрузке */
@@ -125,11 +133,37 @@ body {
   font-display: swap;
 }
 
+/* Для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #01A572; /* основной цвет скролла */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #027652;
+}
+/* Для Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #01A572 #f1f1f1;
+}
+
 /* 20.00 - Global Page Container */
 .container {
   max-width: 100%;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -143,7 +177,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding-top: 20px;
   min-height: 85px;
   color: #fff;
   gap: 20px;
@@ -155,7 +189,8 @@ body {
   height: 65px;
 }
 
-/* 10.02 - Header Catalog Button */
+/* 10.02 - Header Catalog */
+/* === Кнопка "Каталог" === */
 .header__catalog {
   display: flex;
   align-items: center;
@@ -164,12 +199,14 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  height: 50px;
-  padding: 0 18px 0px 18px;
+  height: 55px;
+  padding: 0 18px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 110;
+  position: relative;
 }
 
 .header__catalog:hover {
@@ -177,11 +214,13 @@ body {
   transform: translateY(-2px);
 }
 
+/* Иконка — 4 кубика */
 .header__catalog-icon {
   position: relative;
   width: 16px;
   height: 16px;
   display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .header__catalog-icon::before {
@@ -194,59 +233,310 @@ body {
   background-color: #fff;
   border-radius: 1.5px;
   box-shadow:
-    9px 0 0 #fff,    /* правый верхний кубик */
-    0 9px 0 #fff,    /* левый нижний кубик */
-    9px 9px 0 #fff;  /* правый нижний кубик */
+    9px 0 0 #fff,
+    0 9px 0 #fff,
+    9px 9px 0 #fff;
+  transition: all 0.3s ease;
 }
 
-/* 10.03 Search */
-.header__search {
+/* Крестик */
+.header__catalog.active .header__catalog-icon::before {
+  width: 16px;
+  height: 2px;
+  top: 7px;
+  left: 0;
+  box-shadow: none;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+.header__catalog.active .header__catalog-icon::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  top: 7px;
+  left: 0;
+  background-color: #fff;
+  transform: rotate(-45deg);
+}
+
+/* === КАТАЛОГ === */
+.catalog-overlay {
+  display: none;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(0px);
+  z-index: 100;
+}
+
+.catalog-overlay.active {
+  display: block;
+}
+
+/* панель каталога */
+.catalog-panel {
+  position: fixed;
+  top: 85px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 85px);
+  display: flex;
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  transform: translateY(-2%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.9s ease;
+}
+
+/* плавное открытие */
+.catalog-overlay.active .catalog-panel {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* левая колонка */
+.catalog-sidebar {
+  width: 350px;
+  color: #000;
+  overflow-y: auto;
+  height: 100%;
+  padding: 0px 10px 0px 0px;
+}
+
+/* === Категории в сайдбаре каталога === */
+.catalog-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.catalog-sidebar li {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 740px;
-  height: 53px;
-  background: #fff;
-  border: 2px solid #01A572;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* Поле ввода */
-.header__search input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 0 16px;
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  color: #333;
-}
-
-.header__search input::placeholder {
-  color: #9A9A9A;
+  gap: 12px;
+  padding: 14px 18px;
+  font-size: 19px;
   font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-/* Кнопка */
-.header__search-btn {
-  min-width: 70px;
-  height: 100%;
-  background: #01A572;
-  border: none;
+.catalog-sidebar li:hover {
+  background-color: rgba(1, 165, 114, 0.08);
+  color: #01A572;
+}
+
+.catalog-sidebar li.active {
+  background-color: rgb(247,247,247);
+  color: #01A572;
+  border-radius: 15px;
+}
+
+/* === Иконки категорий === */
+.cat-icon {
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  color: #fff;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  flex-shrink: 0;
+  margin-right: 10px;
 }
 
-.header__search-icon {
-  width: 25px;
-  height: 25px;
+.cat-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  /* Серый #CCD1D6 */
+  filter: brightness(0) saturate(100%) invert(92%) sepia(7%) saturate(135%) hue-rotate(177deg) brightness(92%) contrast(88%);
+  transition: transform 0.2s ease; /* без filter */
+}
+
+.catalog-sidebar li:hover .cat-icon img,
+.catalog-sidebar li.active .cat-icon img {
+  /* Зелёный #01A572 */
+  filter: brightness(0) saturate(100%) invert(49%) sepia(81%) saturate(735%) hue-rotate(119deg) brightness(97%) contrast(92%);
+}
+
+
+/* правая колонка */
+.catalog-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  border-left: 1px solid #eaeaea;
+  height: 100%;
+}
+
+.catalog-sub {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.catalog-sub.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* заголовки */
+.catalog-sub h3 {
+  font-size: 26px;
+  color: #01A572;
+  font-weight: 800;
+  margin-bottom: 25px;
+  margin-top: 0px;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* сетка подкатегорий */
+.catalog-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.catalog-sub-grid h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.catalog-sub-grid h4:hover{
+  color: #01A572;
+}
+
+.catalog-sub-grid h4::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #01A572;
+  border-radius: 2px;
+}
+
+.catalog-sub-grid a {
+  display: block;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.catalog-sub-grid a:hover {
+  color: #01A572;
+}
+
+/* скролл стилизованный */
+.catalog-sidebar::-webkit-scrollbar,
+.catalog-content::-webkit-scrollbar {
+  width: 8px;
+}
+.catalog-sidebar::-webkit-scrollbar-thumb,
+.catalog-content::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.catalog-sidebar::-webkit-scrollbar-thumb:hover,
+.catalog-content::-webkit-scrollbar-thumb:hover {
+  background-color: #01A572;
+}
+
+
+/* === Анимации === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Контейнер поиска */
+.search {
+  width: 100%;
+  max-width: 720px;
+}
+
+.search__wrapper {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background: #01a572; /* зелёный фон, как у твоей темы */
+  border-radius: 12px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+/* Поле ввода */
+.search__input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 10px 0 0 10px; /* плавное слияние */
+  font-size: 15px;
+  color: #333;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* placeholder */
+.search__input::placeholder {
+  color: #9a9a9a;
+}
+
+/* Кнопка */
+.search__btn {
+  height: 100%;
+  width: 70px;
+  border: none;
+  background: #01a572;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+  margin-left: -8px;
+  z-index: 1;
+}
+
+.search__btn:hover {
+  background-color: #019563;
+}
+
+.search__btn:active {
+  transform: scale(0.97);
+}
+
+/* Иконка */
+.search__icon {
+  width: 22px;
+  height: 22px;
   color: #fff;
+}
+
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
 }
 
 /* 10.04 - Header Navigation */
@@ -255,9 +545,9 @@ body {
   align-items: center;
   gap: 24px;
   background-color: #01A572;
-  height: 50px;
+  height: 55px;
   border-radius: 10px;
-  padding: 30px;
+  padding: 0px 20px 0px 20px;
 }
 
 /* Каждый элемент */
@@ -269,11 +559,10 @@ body {
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .header__nav-item:hover {
-  opacity: 0.85;
   transform: translateY(-1px);
 }
 
@@ -286,8 +575,19 @@ body {
   height: 20px;
 }
 
-.nav_heart .nav_compare .nav_cart{
-  opacity: 0.5;
+.heart_scalse {
+  width: 43px !important;
+  height: auto !important;
+}
+
+
+.header__nav-item:not(:first-child) {
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s ease;
+}
+
+.header__nav-item:not(:first-child):hover {
+  opacity: 1;
 }
 
 .header__nav-icon img {
@@ -305,21 +605,23 @@ body {
 
 /* Ховер-эффект иконки */
 .header__nav-item:hover .header__nav-icon img {
-  filter: brightness(0) invert(0.85);
+  filter: brightness(0) invert(1);
 }
 
 /*****************************
 90 - Responsive
 *****************************/
 
-/* 90.00 - Tablet */
-@media (max-width: 1024px) {
+/* 90.00 - Laptop */
+@media (max-width: 1100px) {
   .container {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
-
+@media (max-width: 1030px) {
+  
+}
 /* 90.00 - Mobile */
 @media (max-width: 768px) {
   .header {

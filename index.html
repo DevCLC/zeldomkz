@@ -64,49 +64,125 @@
 </head>
 
 <body>
+<div class="container">
   <!-- header -->
 <header class="header">
-  <div class="header__logo"><img src="images/logo_header.png" alt="Логотип Зеленый Дом"></div>
-<button class="header__catalog">
+<div class="header__logo">
+  <a href="/" class="header__logo-link" aria-label="Главная страница Зеленый Дом">
+    <picture>
+      <source srcset="images/logo_mobile.png" media="(max-width: 1300px)">
+      <img src="images/logo_header.png" alt="Логотип Зеленый Дом">
+    </picture>
+  </a>
+</div>
+<button class="header__catalog" id="catalogButton">
   <span class="header__catalog-icon"></span>
   Каталог
 </button>
-  <div class="header__search">
-  <input type="text" placeholder="Ищите семена или химию?">
-  <button class="header__search-btn">
-    <svg viewBox="0 0 24 24" class="header__search-icon">
-      <circle cx="11" cy="11" r="8" stroke-width="2" fill="none" stroke="currentColor"></circle>
-      <line x1="17" y1="17" x2="22" y2="22" stroke-width="2" stroke="currentColor"></line>
-    </svg>
-  </button>
+
+<div class="catalog-overlay" id="catalogOverlay">
+  <div class="catalog-panel">
+    <div class="catalog-sidebar">
+      <ul>
+        <li data-category="semena-ovoshchey" class="active">
+          <span class="cat-icon">
+            <img src="images/icons/semena_ovoshchey.svg" alt="Иконка Семена овощей"></span>Семена овощей</li>
+        <li data-category="semena-tsvetov">
+          <span class="cat-icon">
+            <img src="images/icons/semena_tsvetov.svg" alt="Иконка Семена цветов"></span>Семена цветов</li>
+        <li data-category="semena-kormovykh">
+          <span class="cat-icon">
+            <img src="images/icons/semena_kormovykh.svg" alt="Иконка Семена кормовых и газонных трав"></span>Семена кормовых и газонных трав</li>
+        <li data-category="udobreniya-stimulyatory">
+          <span class="cat-icon">
+            <img src="images/icons/udobreniya_stimulyatory.svg" alt="Иконка Удобрения и стимуляторы"></span>Удобрения и стимуляторы</li>
+        <li data-category="sredstva-zashchity-rasteniy">
+          <span class="cat-icon">
+            <img src="images/icons/sredstva_zashchity_rasteniy.svg" alt="Иконка Средства защиты растений"></span>Средства защиты растений</li>
+        <li data-category="rassadnyy-material">
+          <span class="cat-icon">
+            <img src="images/icons/rassadnyy_material.svg" alt="Иконка Рассадный материал"></span>Рассадный материал</li>
+        <li data-category="razlichnoye-oborudovaniye">
+          <span class="cat-icon">
+            <img src="images/icons/razlichnoye_oborudovaniye.svg" alt="Иконка Различное оборудование"></span>Различное оборудование</li>
+        <li data-category="rulonnyy-material">
+          <span class="cat-icon">
+            <img src="images/icons/rulonnyy_material.svg" alt="Иконка Рулонный материал"></span>Рулонный материал</li>
+        <li data-category="kapelnyy-poliv">
+          <span class="cat-icon">
+            <img src="images/icons/kapelnyy_poliv.svg" alt="Иконка Капельный полив и орошение"></span>Капельный полив и орошение</li>
+        <li data-category="polivochnyye-komplektuyushchiye">
+          <span class="cat-icon">
+            <img src="images/icons/polivochnyye_komplektuyushchiye.svg" alt="Иконка Поливочные комплектующие"></span>Поливочные комплектующие</li>
+        <li data-category="veterinariya">
+          <span class="cat-icon">
+            <img src="images/icons/veterinariya_vse_dlya_zhivotnykh.svg" alt="Иконка Ветеринария Все для животных"></span>Ветеринария Все для животных</li>
+      </ul>
+    </div>
+
+    <div class="catalog-content">
+      <!-- Семена овощей -->
+      <div class="catalog-sub active" data-category="semena-ovoshchey">
+        <h3>Семена овощей</h3>
+        <div class="catalog-sub-grid">
+          <div>
+            <a href="https://www.zeldom.kz/semena-ovoschey/tomat/" target="_blank"><h4>Семена томата</h4></a>
+            <a href="https://www.zeldom.kz/products/3072-troy-f1/" target="_blank">Трой F1</a>
+            <a href="https://www.zeldom.kz/products/3841-agressor-f1-gavrish-tomat/" target="_blank">Агрессор F1 Гавриш томат</a>
+            <a href="https://www.zeldom.kz/products/3843-rokset-50-gramm/" target="_blank">Роксет 50 грамм</a>
+          </div>
+          <div>
+            <a href="https://www.zeldom.kz/semena-ovoschey/ogurtsy/" target="_blank"><h4>Семена огурцов</h4></a>
+            <a href="https://www.zeldom.kz/products/2958-kiborg-f1-/">Киборг F1</a>
+            <a href="https://www.zeldom.kz/products/3602-mirazh-f1/">Мираж F1</a>
+            <a href="https://www.zeldom.kz/products/1586-asteriks-f1/">Астерикс F1</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
+
+<form class="search" role="search" action="/search">
+  <div class="search__wrapper">
+    <input type="search" class="search__input" placeholder="Ищите семена или химию?"/>
+    <button type="submit" class="search__btn" aria-label="Поиск">
+      <svg class="search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"stroke-linejoin="round" />
+      <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    </button>
+  </div>
+</form>
+
   <nav class="header__nav">
-  <a href="#" class="header__nav-item nav_user">
+  <a href="#" class="header__nav-item">
     <span class="header__nav-icon">
-      <img src="images/user.svg" alt="Вход регистрация Зеленый дом">
+      <img src="images/user.svg" alt="Войти в аккаунт">
     </span>
     <span class="header__nav-text">Войти</span>
   </a>
 
-  <a href="#" class="header__nav-item nav_heart">
-    <span class="header__nav-icon">
-      <img src="images/heart.svg" alt="Избранное">
+  <a href="#" class="header__nav-item">
+    <span class="header__nav-icon heart_scalse">
+      <img src="images/heart_scalse.svg" alt="Избранные товары и товары сравнения">
     </span>
     <span class="header__nav-text">Избранное</span>
   </a>
 
-  <a href="#" class="header__nav-item nav_compare">
+  <a href="#" class="header__nav-item">
     <span class="header__nav-icon">
-      <img src="images/compare.svg" alt="Сравнить цены товаров Зеленый дом">
-    </span>
-    <span class="header__nav-text">Сравнить</span>
-  </a>
-
-  <a href="#" class="header__nav-item nav_cart">
-    <span class="header__nav-icon">
-      <img src="images/cart.svg" alt="Корзина">
+      <img src="images/cart.svg" alt="Корзина покупок">
     </span>
     <span class="header__nav-text">Корзина</span>
+  </a>
+
+  <a href="#" class="header__nav-item">
+    <span class="header__nav-icon">
+      <img src="images/order.svg" alt="Мои заказы">
+    </span>
+    <span class="header__nav-text">Мои заказы</span>
   </a>
 </nav>
 </header>
@@ -120,6 +196,8 @@
 <footer>
 	
 </footer>
+</div>
 
+<script src="script/script.js"></script>
 </body>
 </html>
