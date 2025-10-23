@@ -27,11 +27,9 @@ catalogButton.addEventListener('click', () => {
   }
 });
 
-// === Активация категории ===
 function activateCategory(item) {
   if (!item) return;
 
-  // отменяем предыдущую анимацию
   if (switchTimer) {
     clearTimeout(switchTimer);
     switchTimer = null;
@@ -41,9 +39,15 @@ function activateCategory(item) {
   const category = item.dataset.category;
   const newSub = document.querySelector(`.catalog-sub[data-category="${category}"]`);
 
+  // 🟡 если категории нет — просто подсвечиваем пункт и выходим, вообще ничего не скрываем
+  if (!newSub) {
+    sidebarItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    return;
+  }
+
   if (currentSub === newSub) return;
 
-  // обновляем активный пункт меню
   sidebarItems.forEach(i => i.classList.remove('active'));
   item.classList.add('active');
 
@@ -53,12 +57,17 @@ function activateCategory(item) {
     sub.style.display = 'none';
   });
 
-  // показываем нужную
+  // показываем новую
   newSub.style.display = 'block';
 
-  // плавная анимация (через RAF чтобы браузер успел пересчитать стили)
-  requestAnimationFrame(() => newSub.classList.add('active'));
+  // двойной кадр — для плавного появления
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      newSub.classList.add('active');
+    });
+  });
 }
+
 
 // === Наведение / клик по категориям ===
 sidebarItems.forEach(item => {
