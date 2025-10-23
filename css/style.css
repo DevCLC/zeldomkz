@@ -44,7 +44,8 @@ html {
 button,
 a,
 input,
-textarea {
+textarea,
+li {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -178,9 +179,21 @@ body {
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   min-height: 85px;
   color: #fff;
   gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+.header.hide {
+  transform: translateY(-100%);
 }
 
 /* 10.01 - Header Logo */
@@ -264,11 +277,10 @@ body {
 .catalog-overlay {
   display: none;
   position: fixed;
-  top: 30px;
+  top: 115px !important;
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(0px);
   z-index: 100;
 }
 
@@ -279,7 +291,7 @@ body {
 /* панель каталога */
 .catalog-panel {
   position: fixed;
-  top: 85px;
+  top: 115px !important;
   left: 0;
   width: 100%;
   height: calc(100vh - 85px);
@@ -302,11 +314,11 @@ body {
 
 /* левая колонка */
 .catalog-sidebar {
-  width: 350px;
+  width: 400px;
   color: #000;
   overflow-y: auto;
   height: 100%;
-  padding: 0px 10px 0px 0px;
+  padding: 0px 10px 0px 20px;
 }
 
 /* === Категории в сайдбаре каталога === */
@@ -390,7 +402,7 @@ body {
 
 /* заголовки */
 .catalog-sub h3 {
-  font-size: 26px;
+  font-size: 30px;
   color: #01A572;
   font-weight: 800;
   margin-bottom: 25px;
@@ -407,7 +419,7 @@ body {
 }
 
 .catalog-sub-grid h4 {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
   color: #222;
   margin-bottom: 12px;
@@ -436,7 +448,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 15px;
   transition: color 0.2s ease;
 }
 
@@ -444,28 +456,65 @@ body {
   color: #01A572;
 }
 
-/* скролл стилизованный */
-.catalog-sidebar::-webkit-scrollbar,
-.catalog-content::-webkit-scrollbar {
-  width: 8px;
-}
-.catalog-sidebar::-webkit-scrollbar-thumb,
-.catalog-content::-webkit-scrollbar-thumb {
-  background-color: #fff;
-  border-radius: 10px;
-}
-.catalog-sidebar::-webkit-scrollbar-thumb:hover,
-.catalog-content::-webkit-scrollbar-thumb:hover {
-  background-color: #01A572;
+/* Скрываем скроллбар, но оставляем прокрутку */
+.catalog-sidebar,
+.catalog-content {
+  -ms-overflow-style: none;  /* для IE и Edge */
+  scrollbar-width: none;     /* для Firefox */
 }
 
+.catalog-sidebar::-webkit-scrollbar,
+.catalog-content::-webkit-scrollbar {
+  display: none; /* для Chrome, Safari и Opera */
+}
+
+/* Карточка категории */
+.catalog-sub-grid div {
+  position: relative;
+  padding: 0;
+  cursor: default; /* курсор по умолчанию, не кликаемый */
+}
+
+/* Ссылки внутри карточки */
+.catalog-sub-grid div > a {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Только картинка и h4 кликабельные */
+.catalog-sub-grid div > a img,
+.catalog-sub-grid div > a h4 {
+  pointer-events: auto; /* разрешаем клик */
+}
+
+/* Всё остальное не кликается */
+.catalog-sub-grid div {
+  pointer-events: none;
+}
+
+.catalog-sub-grid div > a {
+  pointer-events: auto;
+}
 
 /* === Анимации === */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Фото в карточке подкатегории */
+.catalog-sub-grid div img {
+  width: 100%;
+  max-width: 350px;
+  height: 222px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
 
+.catalog-sub-name{
+  display: flex;
+  flex-direction: column;
+}
 
 /* Контейнер поиска */
 .search {
