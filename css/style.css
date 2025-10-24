@@ -277,25 +277,27 @@ body {
 /* Затемнение фона */
 .catalog-overlay {
   position: fixed;
-  top: 115px !important;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  z-index: 200;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .catalog-overlay.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
 /* Панель каталога */
 .catalog-panel {
-  position: fixed;
-  top: 115px !important;
+  position: absolute;
+  top: 115px;
   left: 0;
   width: 100%;
   height: calc(100vh - 85px);
