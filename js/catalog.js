@@ -15,22 +15,21 @@ catalogButton.addEventListener('click', () => {
     // === Открытие каталога ===
     catalogOverlay.style.pointerEvents = 'auto';
 
+    // показываем только первую категорию при открытии
     if (isFirstOpen && sidebarItems.length > 0) {
       setTimeout(() => {
-        activateCategory(sidebarItems[0]);
+        activateCategory(sidebarItems[0]); // активируем первую категорию
         isFirstOpen = false;
       }, 50);
     }
   } else {
     // === Закрытие каталога ===
     catalogOverlay.style.pointerEvents = 'none';
-
     sidebarItems.forEach(i => i.classList.remove('active'));
     subBlocks.forEach(sub => {
       sub.classList.remove('active');
       sub.style.display = 'none';
     });
-
     isFirstOpen = true;
   }
 });
@@ -43,37 +42,26 @@ function activateCategory(item) {
     switchTimer = null;
   }
 
-  const currentSub = document.querySelector('.catalog-sub.active');
   const category = item.dataset.category;
   const newSub = document.querySelector(`.catalog-sub[data-category="${category}"]`);
 
-  // 🟡 если категории нет — просто подсвечиваем пункт и выходим, вообще ничего не скрываем
-  if (!newSub) {
-    sidebarItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    return;
-  }
-
-  if (currentSub === newSub) return;
-
+  // 🔹 Убираем активность со всех пунктов и блоков
   sidebarItems.forEach(i => i.classList.remove('active'));
-  item.classList.add('active');
-
-  // скрываем все подкатегории
   subBlocks.forEach(sub => {
     sub.classList.remove('active');
     sub.style.display = 'none';
   });
 
-  // показываем новую
-  newSub.style.display = 'block';
+  // 🔹 Активируем выбранный пункт
+  item.classList.add('active');
 
-  // двойной кадр — для плавного появления
-  requestAnimationFrame(() => {
+  // 🔹 Показываем только нужный блок
+  if (newSub) {
+    newSub.style.display = 'block';
     requestAnimationFrame(() => {
       newSub.classList.add('active');
     });
-  });
+  }
 }
 
 // === Наведение / клик по категориям ===
@@ -81,7 +69,6 @@ sidebarItems.forEach(item => {
   ['mouseenter', 'click'].forEach(event => {
     item.addEventListener(event, () => {
       if (!item.classList.contains('active')) {
-        // небольшая защита от "мелькания"
         if (switchTimer) clearTimeout(switchTimer);
         switchTimer = setTimeout(() => activateCategory(item), 80);
       }
@@ -89,7 +76,7 @@ sidebarItems.forEach(item => {
   });
 });
 
-// === Закрытие при клике вне панели ===
+// === Клик вне панели ===
 catalogOverlay.addEventListener('click', e => {
   if (e.target === catalogOverlay) {
     catalogOverlay.classList.remove('active');
