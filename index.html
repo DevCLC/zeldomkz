@@ -65,77 +65,102 @@
 
 <body>
 <div class="container">
-  <!-- header -->
+<!-- header -->
 <header class="header">
-<div class="header__logo">
-  <a href="/" class="header__logo-link" aria-label="Главная страница Зеленый Дом">
-    <picture>
-      <source srcset="images/logo_mobile.png" media="(max-width: 1300px)">
-      <img src="images/logo_header.png" alt="Логотип Зеленый Дом">
-    </picture>
-  </a>
-</div>
-<button id="catalogButton" class="header__catalog">
-  <span class="header__catalog-icon"></span>
-  Каталог
-</button>
+  <div class="header__top">
+    <div class="header__logo">
+      <a href="/" class="header__logo-link" aria-label="Главная страница Зеленый Дом">
+        <picture>
+          <source srcset="images/logo_mobile.png" media="(max-width: 1300px)">
+          <img src="images/logo_header.png" alt="Логотип Зеленый Дом">
+        </picture>
+      </a>
+    </div>
 
-<!-- Пустой контейнер каталог -->
+<button id="catalogButton" class="header__catalog"> 
+  <span class="header__catalog-icon"></span>Каталог 
+</button> 
+
+<!-- Пустой контейнер каталог --> 
 <div id="catalogContainer"></div>
 
-<form class="search" role="search" action="/search">
-  <div class="search__wrapper">
-    <input type="search" class="search__input" placeholder="Ищите семена или химию?"/>
-    <button type="submit" class="search__btn" aria-label="Поиск">
-      <svg class="search__icon" viewBox="0 0 24 24" width="24" height="24">
-      <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"stroke-linejoin="round" />
-      <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    </button>
-  </div>
-</form>
+    <form class="search" role="search" action="/search">
+      <div class="search__wrapper">
+        <input type="search" class="search__input" placeholder="Ищите семена или химию?" />
+        <button type="submit" class="search__btn" aria-label="Поиск">
+          <svg class="search__icon" viewBox="0 0 24 24" width="24" height="24">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" />
+            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+      </div>
+    </form>
 
-  <nav class="header__nav">
-  <a href="#" class="header__nav-item">
-    <span class="header__nav-icon">
+    <a href="#" class="header__account">
       <img src="images/user.svg" alt="Войти в аккаунт">
-    </span>
-    <span class="header__nav-text">Войти</span>
-  </a>
+    </a>
+  </div>
 
-  <a href="#" class="header__nav-item">
-    <span class="header__nav-icon heart_scalse">
-      <img src="images/heart_scalse.svg" alt="Избранные товары и товары сравнения">
-    </span>
-    <span class="header__nav-text">Избранное</span>
-  </a>
+  <!-- навигация, видимая только на десктопе -->
+  <nav class="header__nav desktop-nav">
+    <a href="#" class="header__nav-item">
+      <span class="header__nav-icon"><img src="images/user.svg" alt="Войти в аккаунт"></span>
+      <span class="header__nav-text">Войти</span>
+    </a>
 
-  <a href="#" class="header__nav-item">
-    <span class="header__nav-icon">
-      <img src="images/cart.svg" alt="Корзина покупок">
-    </span>
-    <span class="header__nav-text">Корзина</span>
-  </a>
+    <a href="#" class="header__nav-item">
+      <span class="header__nav-icon"><img src="images/heart_scalse.svg" alt="Избранное"></span>
+      <span class="header__nav-text">Избранное</span>
+    </a>
 
-  <a href="#" class="header__nav-item">
-    <span class="header__nav-icon">
-      <img src="images/order.svg" alt="Мои заказы">
-    </span>
-    <span class="header__nav-text">Мои заказы</span>
-  </a>
-</nav>
+    <a href="#" class="header__nav-item">
+      <span class="header__nav-icon"><img src="images/cart.svg" alt="Корзина"></span>
+      <span class="header__nav-text">Корзина</span>
+    </a>
+
+    <a href="#" class="header__nav-item">
+      <span class="header__nav-icon"><img src="images/order.svg" alt="Мои заказы"></span>
+      <span class="header__nav-text">Мои заказы</span>
+    </a>
+  </nav>
 </header>
 
 <!-- main content -->
-<main>
-	
-</main>
+  <main style="padding:100px 20px;">
+    <p>Тут контент, просто проверяем прокрутку...</p>
+    <div style="height:1500px;"></div>
+  </main>
+
 
 <!-- footer -->
 <footer>
 	
 </footer>
 </div>
+
+<!-- мобильное меню -->
+  <nav class="mobile-nav">
+    <a href="#" class="header__nav-item">
+      <img src="images/shop.svg" alt="Главная Интернет-Магазин Зеленый дом">
+      <span class="header__nav-text">Магазин</span>
+    </a>
+    <a href="#" id="catalogButton" class="header__nav-item">
+      <img src="images/catalog.svg" alt="Каталог продукции">
+      <span class="header__nav-text">Каталог</span>
+    </a>
+    <a href="#" class="header__nav-item"> 
+      <img src="images/heart_scalse.svg" alt="Избранное">
+      <span class="header__nav-text">Избранное</span>
+    </a>
+    <a href="#" class="header__nav-item">
+      <img src="images/cart.svg" alt="Корзина">
+      <span class="header__nav-text">Корзина</span>
+    </a>
+    <a href="#" class="header__nav-item">
+      <img src="images/order.svg" alt="Мои заказы">
+      <span class="header__nav-text">Мой Заказы</span>
+    </a>
+  </nav>
 
 <script src="js/script.js"></script>  
 </body>
