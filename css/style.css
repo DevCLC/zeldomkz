@@ -861,7 +861,7 @@ body {
     right: 0;
     z-index: 1000;
     background-color: #fff;
-    padding: 10px 15px;
+    padding: 20px 10px 0px 10px;
   }
 
   .header__catalog {
@@ -899,7 +899,6 @@ body {
   .header {
     flex-direction: column;
     align-items: stretch;
-    padding: 20px 10px;
     min-height: auto;
   }
 
@@ -923,15 +922,12 @@ body {
     font-size: 14px;
     padding: 0 12px;
   }
-
   .search__btn {
     width: 60px;
   }
-
   .desktop-nav {
     display: none;
   }
-
   .header__account img {
     display: block;
   }
@@ -940,7 +936,6 @@ body {
 /* === Мобильные устройства === */
 @media (max-width: 768px) {
   .header {
-    padding: 20px 10px;
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
@@ -1013,22 +1008,16 @@ body {
     height: 40px;
     padding: 1.5px;
   }
-  .header {
-    padding: 20px 10px;
-  }
   .search__input {
     font-size: 12px;
   }
-
   .search__btn {
     width: 40px;
   }
-
   .mobile-nav {
     height: 60px;
     z-index: 9999;
   }
-
   .header__nav-text {
     font-size: 10px;
   }
