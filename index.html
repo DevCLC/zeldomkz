@@ -99,9 +99,6 @@
     </a></div>
   </div>
 
-<!-- Пустой контейнер каталог --> 
-<div id="catalogContainer"></div>
-
   <!-- навигация, видимая только на десктопе -->
   <nav class="header__nav desktop-nav">
     <a href="#" class="header__nav-item">
@@ -126,10 +123,72 @@
   </nav>
 </header>
 
+<!-- Пустой контейнер каталог --> 
+<div id="catalogContainer"></div>
+
 <!-- main content -->
-  <main style="padding:100px 20px;">
-    <p>Тут контент, просто проверяем прокрутку...</p>
-    <div style="height:1500px;"></div>
+  <main>
+    <section class="promo-section">
+    <div class="slider">
+      <div class="slides">
+        <!-- Слайд 1 -->
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1500&q=80')">
+          <div class="overlay">
+            <h1>БЕРИ СЕЙЧАС<br>ПЛАТИ ПОТОМ</h1>
+            <div class="credit-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bank_CenterCredit_logo.svg/512px-Bank_CenterCredit_logo.svg.png" alt="centercredit">
+              <p>До 3 млн ₸ в рассрочку<br><b>6% на 6 месяцев</b></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Слайд 2 -->
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80')">
+          <div class="overlay">
+            <h1>Техника и удобрения<br>в рассрочку</h1>
+            <div class="credit-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bank_CenterCredit_logo.svg/512px-Bank_CenterCredit_logo.svg.png" alt="centercredit">
+              <p>Выбирайте, покупайте,<br>платите потом</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav prev">
+      <span class="arrow-left"></span>
+    </button>
+    <button class="nav next">
+      <span class="arrow-right"></span>
+    </button>
+      <div class="dots"></div>
+    </div>
+
+    <!-- Карточка товара -->
+    <aside class="product-card">
+      <div class="badge">Скидка</div>
+      <img src="https://www.agroxx.kz/upload/ultramag.jpg" alt="Ультрамаг Супер Сера-900">
+      <h3>Ультрамаг Супер Сера-900</h3>
+      <p class="old-price">35 900 ₸</p>
+      <p class="new-price">21 365 ₸</p>
+      <button class="add-btn">В корзину 🛒</button>
+    </aside>
+  </section>
+
+  <!-- Преимущества -->
+  <section class="benefits">
+    <div class="benefit">
+      🚚 Доставка по всему Казахстану – быстро и надёжно в любую точку страны.
+    </div>
+    <div class="benefit">
+      🌾 Широкий ассортимент – семена, удобрения, инвентарь и товары для фермеров.
+    </div>
+    <div class="benefit">
+      🏅 Гарантия качества – только проверенные и сертифицированные товары.
+    </div>
+    <div class="benefit">
+      👨‍🌾 Консультации специалистов – помощь в выборе и уходе за растениями.
+    </div>
+  </section>
   </main>
 
 
