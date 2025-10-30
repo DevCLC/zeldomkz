@@ -58,3 +58,11 @@ setInterval(() => {
   index = (index + 1) % totalSlides;
   goToSlide(index);
 }, 5000);
+
+const catalogButton = document.getElementById("catalogButton");
+const catalogOverlay = document.querySelector(".catalog-overlay");
+
+catalogButton.addEventListener("click", () => {
+  catalogButton.classList.toggle("active");
+  catalogOverlay.classList.toggle("active");
+});
