@@ -18,8 +18,11 @@ INDEX:
         30.01 Block 1
 
     90 - Responsive
-        90.00 - Laptop
-        90.01 - Mobile
+        /* 90.01 Так правки микро мелочи по адаптиву */
+        /* 90.02 === Основной весь адаптив ниже ноутбуков === */
+        /* 90.03 === Планшеты вертикально === */
+        /* 90.04 === Мобильные устройства === */
+
     
 
 ******************************/
@@ -49,6 +52,7 @@ a,
 input,
 textarea,
 li {
+  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -62,7 +66,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  padding-bottom: 70px;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -171,6 +174,7 @@ body {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: #fff;
   min-height: 85px;
   color: #fff;
   gap: 20px;
@@ -776,10 +780,9 @@ body {
 /*****************************
 30.01 - Block 1
 *****************************/
-/* Основной блок */
+/* === ОСНОВНОЙ БЛОК === */
 .promo-section {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   gap: 10px;
@@ -792,10 +795,16 @@ body {
   overflow: hidden;
   width: 70%;
   border-radius: 16px;
+  flex: 1 1 60%;
+  min-width: 300px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .slides {
   display: flex;
+  height: 100%;
   transition: transform 0.8s ease-in-out;
 }
 
@@ -803,16 +812,15 @@ body {
   min-width: 100%;
   background-size: cover;
   background-position: center;
-  position: relative;
-  height: 400px;
+  height: 100%;
 }
 
-/* Стрелки навигации */
+/* Стрелки */
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
+  width: 40px;
   height: 50px;
   border-radius: 50%;
   background: #fff;
@@ -825,110 +833,152 @@ body {
   backdrop-filter: blur(6px);
   z-index: 5;
 }
-
-/* Расположение */
 .prev { left: -22px; }
 .next { right: -22px; }
 
-/* Визуальные стрелочки */
 .arrow-left, .arrow-right {
-  display: block;
   width: 12px;
   height: 12px;
   border-top: 2px solid #01A572;
   border-right: 2px solid #01A572;
   transition: 0.3s;
 }
+.arrow-left { transform: rotate(-135deg); margin-left: 20px; }
+.arrow-right { transform: rotate(45deg); margin-right: 20px; }
+.nav:hover .arrow-left, .nav:hover .arrow-right { border-color: #00a86b; }
 
-.arrow-left {
-  transform: rotate(-135deg);
-  margin-left: 20px;
-}
-.arrow-right {
-  transform: rotate(45deg);
-  margin-right: 20px;
-}
-
-.nav:hover .arrow-left,
-.nav:hover .arrow-right {
-  border-color: #00a86b;
-}
-
-/* Точки */
 .dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 6px;
+  background-color: #c2c1c14f;
+  padding: 5px 20px 5px 20px;
+  align-items: center;
+  border-radius: 15px;
 }
 .dots button {
-  width: 10px;
-  height: 10px;
+  width: 0.00vh;
+  height: 1.1vh;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.6);
+  background: #ffffff52;
   cursor: pointer;
 }
 .dots .active {
-  background: white;
+  width: 0.3vh;
+  height: 1.3vh;
+  background: #ffffffba;
 }
 
-/* Карточка товара */
+/* === КАРТОЧКА ТОВАРА === */
 .product-card {
   width: 25%;
   background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
+  border-radius: 15px;
+  text-align: left;
   position: relative;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border: 1px solid #01A572;
+  flex: 1 1 30%;
+  min-width: 280px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 20px;
 }
-.product-card img {
-  width: 100px;
-  margin-bottom: 10px;
-}
+
+/* Плашка */
 .product-card .badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 0;
+  left: 0;
   background: #00a86b;
-  color: white;
-  font-weight: bold;
-  padding: 5px 12px;
-  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  border-radius: 15px 0 15px 0;
+  font-size: 16px;
 }
+
+/* Изображение */
+.product-card img {
+  width: 100%;
+  margin: auto;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+/* Название */
+.product-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  text-align: left;
+}
+
+/* Цены и кнопка */
+.product-flex {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .old-price {
   text-decoration: line-through;
   color: #888;
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
 }
 .new-price {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 27px;
+  font-weight: 800;
   color: #111;
+  margin: 2px 0 0 0;
 }
+
+/* Кнопка */
 .add-btn {
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: #00a86b;
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 16px 26px;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background 0.3s ease;
 }
-.add-btn:hover {
-  background: #008f5c;
+.add-btn:hover { background: #008f5c; }
+.add-btn img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
 }
 
-/* === Лента преимуществ === */
+
+/* === ЛЕНТА ПРЕИМУЩЕСТВ === */
+.benefits-section {
+  overflow: hidden;
+  padding: 50px 0;
+  background: #fff;
+}
+
 .benefits {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 15px;
-  justify-content: center;
-  padding-top: 50px;
+  animation: scroll-benefits 25s linear infinite;
+  width: max-content;
 }
 
 .benefit {
@@ -938,7 +988,9 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 400px;
+  width: 350px;
+  flex-shrink: 0;
+  height: 80px;
 }
 
 .benefit img {
@@ -951,13 +1003,169 @@ body {
   line-height: 1.4;
   font-size: 14px;
   font-weight: 600;
+  color: #111;
+}
+
+/* === Анимация бесконечной прокрутки === */
+@keyframes scroll-benefits {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* === Ховер: приостанавливаем === */
+.benefits:hover {
+  animation-play-state: paused;
+}
+
+.promo-section-scroll{
+  display: none;
 }
 
 /*****************************
 90 - Responsive
 *****************************/
 
+
+/* 90.01 Так правки микро мелочи по адаптиву */
+@media (max-width: 1170px) {
+  .product-card{
+    padding: 15px;
+  }
+}
+
+
+/* 90.02 === Основной весь адаптив ниже ноутбуков === */
 @media (max-width: 1024px) {
+  .promo-section {
+    display: none;
+  }
+
+/* === Основной блок === */
+.promo-section-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  background: #fff;
+}
+
+/* === Баннеры === */
+.banners {
+  display: flex;
+  overflow-x: auto;
+  padding-top: 70px;
+  scroll-snap-type: x mandatory;
+  gap: 15px;
+  scrollbar-width: none;
+}
+.banners::-webkit-scrollbar { display: none; }
+
+.banner {
+  flex: 0 0 80%;
+  max-width: 600px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+.banner:hover { transform: scale(1.02); }
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === Категории (2 ряда) === */
+.categories-wrapper {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 10px;
+}
+.categories-wrapper::-webkit-scrollbar { display: none; }
+
+.categories {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto); /* два ряда */
+  grid-auto-columns: 110px;
+  gap: 20px 15px;
+  scroll-snap-type: x mandatory;
+  justify-content: start;
+  align-items: start;
+}
+
+/* Каждый элемент категории */
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+/* Иконка в рамке */
+.category-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  background: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-img img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.category-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* Подпись */
+.category p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  margin-top: 8px;
+  line-height: 1.3;
+  max-width: 110px;
+}
+
+/* === Адаптив === */
+@media (max-width: 1024px) {
+  .banner { height: 200px; }
+  .categories { grid-auto-columns: 100px; gap: 16px 12px; }
+  .category-img { width: 100px; height: 100px; }
+  .category p { max-width: 100px; font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+  .banner { flex: 0 0 85%; height: 180px; }
+  .categories { grid-auto-columns: 90px; gap: 14px 10px; }
+  .category-img { width: 90px; height: 90px; }
+  .category-img img { width: 50px; height: 50px; }
+  .category p { max-width: 90px; font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .banner { flex: 0 0 90%; height: 160px; }
+  .categories { grid-auto-columns: 80px; gap: 12px 8px; }
+  .category-img { width: 80px; height: 80px; }
+  .category-img img { width: 60px; height: 60px; }
+  .category p { max-width: 80px; font-size: 11px; }
+}
+
 /* Прячем десктопное меню */
   .desktop-nav {
     display: none;
@@ -1093,7 +1301,8 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #fff;
+    background-color: #fff !important;
+    transition: background-color 0.3s ease;
     padding: 20px 10px 0px 10px;
   }
 
@@ -1127,7 +1336,9 @@ body {
   }
 
 }
-/* === Планшеты вертикально === */
+
+
+/* 90.03 === Планшеты вертикально === */
 @media (max-width: 992px) {
   .header {
     flex-direction: column;
@@ -1166,8 +1377,12 @@ body {
   }
 }
 
-/* === Мобильные устройства === */
+/* 90.04 === Мобильные устройства === */
 @media (max-width: 768px) {
+  .benefit {
+    width: 300px;
+    height: auto;
+  }
   .header {
     flex-direction: column;
     align-items: stretch;
