@@ -58,3 +58,32 @@ setInterval(() => {
   index = (index + 1) % totalSlides;
   goToSlide(index);
 }, 5000);
+
+// Рейтинг
+document.querySelectorAll('.hot-rating').forEach(rating => {
+  const value = parseFloat(rating.dataset.rating);
+  const stars = rating.querySelectorAll('.star');
+  stars.forEach((star, i) => {
+    if (i < value) star.classList.add('active');
+  });
+});
+
+// Раскрытие описания
+const cards = document.querySelectorAll('.hot-card');
+cards.forEach(card => {
+  const toggle = card.querySelector('.hot-toggle');
+  toggle.addEventListener('click', (e) => {
+    card.classList.toggle('open');
+    e.stopPropagation(); // предотвращаем закрытие карточки сразу после клика на кнопку
+  });
+});
+
+// Закрытие при клике вне карточки
+document.addEventListener('click', (e) => {
+  cards.forEach(card => {
+    if (!card.contains(e.target)) { // если клик вне карточки
+      card.classList.remove('open');
+    }
+  });
+});
+

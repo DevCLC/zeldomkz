@@ -16,6 +16,8 @@ INDEX:
 
     30 - Main Content
         30.01 Block 1
+        30.02 Горячие товары
+        30.03 ЛЕНТА ПРЕИМУЩЕСТВ
 
     90 - Responsive
         /* 90.01 Так правки микро мелочи по адаптиву */
@@ -23,29 +25,16 @@ INDEX:
         /* 90.03 === Планшеты вертикально === */
         /* 90.04 === Мобильные устройства === */
 
-    
-
-******************************/
-
 /*
     Default Primary Color:       #01A572
-    Default Border Color:        #00A877
-    Default Text Color:          #9A9A9A
-    Default Heading Color:       #222222
+    Default Border Color:        #01A572
+    Default Text Color:          #222222 & #fff & #000
     Default Body Font:           "Montserrat", sans-serif
 */
 
 /*****************************
 00 - Base - Global
 *****************************/
-
-html {
-  box-sizing: border-box;
-  scrollbar-gutter: stable; /* предотвращает сдвиг при появлении скролла */
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
 button,
 a,
@@ -57,11 +46,14 @@ li {
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
-    font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-body {
+html, body {
+  box-sizing: border-box;
+  scrollbar-gutter: stable both-edges;
+  overflow-x: hidden;
   background: #fff;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -70,7 +62,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: none;
 }
 
 /* Regular (400) */
@@ -79,7 +71,7 @@ body {
   src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* Medium (500) */
@@ -88,7 +80,7 @@ body {
   src: url('../fonts/Montserrat-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* SemiBold (600) */
@@ -97,7 +89,7 @@ body {
   src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* Bold (700) */
@@ -106,7 +98,7 @@ body {
   src: url('../fonts/Montserrat-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* ExtraBold (800) */
@@ -115,7 +107,7 @@ body {
   src: url('../fonts/Montserrat-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* Black (900) */
@@ -124,7 +116,7 @@ body {
   src: url('../fonts/Montserrat-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* Для Chrome, Edge, Safari */
@@ -152,6 +144,10 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #01A572 #f1f1f1;
 }
+:root {
+  --container-padding: 20px;
+}
+
 
 /* 20.00 - Global Page Container */
 .container {
@@ -171,11 +167,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 50px 20px 40px 20px;
   background-color: #fff;
   min-height: 85px;
+  height: 85px;
   color: #fff;
   gap: 20px;
   position: fixed;
@@ -786,7 +781,7 @@ body {
   justify-content: space-between;
   align-items: stretch;
   gap: 10px;
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 /* Слайдер */
@@ -820,7 +815,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
+  width: 45px;
   height: 50px;
   border-radius: 50%;
   background: #fff;
@@ -860,20 +855,20 @@ body {
   border-radius: 15px;
 }
 .dots button {
-  width: 0.00vh;
-  height: 1.1vh;
+  width: 1vh;
+  height: 1.3vh;
   border-radius: 50%;
   border: none;
   background: #ffffff52;
   cursor: pointer;
 }
 .dots .active {
-  width: 0.3vh;
-  height: 1.3vh;
+  width: 1.7vh;
+  height: 1.6vh;
   background: #ffffffba;
 }
 
-/* === КАРТОЧКА ТОВАРА === */
+/* === КАРТОЧКА ТОВАРА Справа баннера === */
 .product-card {
   width: 25%;
   background: #fff;
@@ -966,12 +961,440 @@ body {
 }
 
 
-/* === ЛЕНТА ПРЕИМУЩЕСТВ === */
+/* 30.02 Горячие товары */
+.hot-section {
+  position: relative;
+}
+
+.hot-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hot-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.hot-arrow {
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #E5E5E5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+}
+
+.hot-arrow:hover {
+  background: #01A572;
+  border-color: #01A572;
+}
+
+.hot-arrow::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #333;
+  border-right: 2px solid #333;
+  transition: 0.25s;
+}
+
+.hot-arrow.left::before {
+  transform: rotate(-135deg);
+}
+
+.hot-arrow.right::before {
+  transform: rotate(45deg);
+}
+
+.hot-arrow:hover::before {
+  border-color: #fff;
+}
+
+/* Контейнер с карточками */
+.hot-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin-left: calc(-1 * var(--container-padding, 20px));
+  margin-right: calc(-1 * var(--container-padding, 20px));
+  padding-left: var(--container-padding, 20px);
+  padding-right: var(--container-padding, 20px);
+}
+
+.hot-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.hot-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hot-row {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  cursor: grab;
+  user-select: none;
+}
+.hot-row:active {
+  cursor: grabbing;
+}
+.hot-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.hot-card {
+  min-width: 250px;
+  flex-shrink: 0;
+  background-color: #F7F7F7;
+  border-radius: 15px;
+  flex-direction: column;
+  position: relative;
+}
+
+.hot-nav {
+  display: flex;
+  gap: 10px;
+}
+
+/* Делаем горизонтальный верх */
+.hot-card > .hot-img-box,
+.hot-card > .hot-info {
+  display: flex;
+}
+
+.hot-card > .hot-img-box,
+.hot-info {
+  display: flex;
+}
+
+.hot-top {
+  display: flex;
+  gap: 18px;
+}
+
+.hot-img-box{
+  position: relative;
+  padding-bottom: 10px;
+}
+.hot-img-box img {
+  width: 250px;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #01A572;
+  flex-shrink: 0;
+}
+
+.hot-sale {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #01A572;
+  color: #fff;
+  font-weight: 600;
+  height: 35px;
+  padding: 10px;
+  width: auto;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* LIKE */
+.hot-like img {
+  width: 25px;
+  display: flex;
+  height: 30px;
+  border: none;
+}
+
+.hot-like {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 35px;
+  background-color: #ffffffc8;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 0;
+}
+
+.hot-name{
+  display: flex;
+  gap: 6px; 
+  align-items: center;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.hot-name-ru {
+  color: #000;
+}
+.hot-sep { 
+  color: #949494; 
+}
+.hot-name-en { 
+  color: #949494;
+}
+
+.brand-logo { 
+  height: 24px; 
+  margin: 5px 0; 
+}
+
+.hot-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 5px 0;
+}
+
+.hot-badge {
+  background: #FF7700;
+  padding: 4px 8px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 13px;
+  width: fit-content;
+  margin: 5px 0;
+  display: flex;
+}
+
+.hot-badge img {
+  width: 30px;
+  height: auto;
+  padding-right: 10px;
+}
+
+.hot-price-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  margin: 5px 0;
+}
+.hot-price { 
+  font-size: 22px; 
+
+}
+.hot-old { 
+  text-decoration: line-through #000; 
+  color: #FF7700;
+}
+
+.hot-add {
+  background: #ff6b01;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.hot-properties {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  row-gap: 5px;
+  font-size: 14px;
+}
+.hot-properties img { width: 18px; margin-right: 4px; }
+
+.hot-desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.hot-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 5px;
+}
+.hot-rating .star {
+  width: 15px;
+  filter: grayscale(1) brightness(0.7);
+  transition: 0.25s;
+}
+.hot-rating .star.active {
+  filter: none;
+}
+.hot-review-count{
+  color: #9E9E9E;
+  font-size: 17px;
+  font-weight: 500;
+}
+.hot-rating-count{
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* Открывающийся блок (оставлено твоё) */
+.hot-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: .35s ease;
+  width: 100%;
+  padding-top: 0;
+}
+.hot-card.open .hot-details {
+  max-height: 300px;
+  opacity: 1;
+  padding-top: 10px;
+  transform: translateY(0);
+  background-color: #F2F2F2;
+}
+
+/* Сетка характеристик */
+.hot-props {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px 18px;
+  padding: 0 15px;
+  margin: 0;
+  list-style: none;
+}
+
+/* Один пункт характеристики */
+.hot-props li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Кружок под иконку */
+.hot-prop-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 5px;
+  background: #E9E9E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG */
+.hot-prop-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Надпись */
+.hot-prop-text {
+  white-space: nowrap;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hot-details p {
+  font-size: 16px;
+  color: #555555;
+  font-weight: 500;
+  padding: 0 15px;
+}
+
+.hot-props li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.hot-props img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+.hot-toggle {
+  width: 100%;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 0 0 13px 13px;
+  background-color: #F2F2F2;
+  border: none;
+  transition: border-radius .45s ease, transform .45s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+}
+
+.hot-toggle::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(45deg);
+  transition: transform .35s ease;
+}
+
+.hot-card.open .hot-toggle::before {
+  transform: rotate(-135deg);
+}
+
+.hot-top {
+  display: flex;
+  gap: 15px;
+}
+.hot-line{
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 5px;
+  margin-top: 20px;
+}
+
+/* === 30.03 ЛЕНТА ПРЕИМУЩЕСТВ === */
 .benefits-section {
   overflow: hidden;
   padding: 50px 0;
   background: #fff;
+
+  /* ВЫТАСКИВАЕМ ИЗ КОНТЕЙНЕРА */
+  margin-left: calc(-1 * var(--container-padding, 20px));
+  margin-right: calc(-1 * var(--container-padding, 20px));
+
+  /* Возвращаем внутренние отступы */
+  padding-left: 20px;
+  padding-right: 20px;
 }
+
 
 .benefits {
   display: flex;
@@ -1048,32 +1471,39 @@ body {
 .promo-section-scroll {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 20px;
+  gap: 20px;
+  padding: 20px 0px 0px 0px;
   background: #fff;
 }
 
-/* === Баннеры === */
 .banners {
   display: flex;
   overflow-x: auto;
-  padding-top: 70px;
   scroll-snap-type: x mandatory;
-  gap: 15px;
+  gap: 14px;
   scrollbar-width: none;
+
+  /* ВЫТАСКИВАЕМ ИЗ КОНТЕЙНЕРА */
+  margin-left: calc(-1 * var(--container-padding, 20px));
+  margin-right: calc(-1 * var(--container-padding, 20px));
+
+  padding: 90px 20px;
+  padding-bottom: 0px;
+  scroll-padding-left: 20px;
+  scroll-padding-right: 20px;
 }
+
 .banners::-webkit-scrollbar { display: none; }
 
 .banner {
   flex: 0 0 80%;
   max-width: 600px;
-  height: 220px;
+  height: 200px;
   border-radius: 16px;
   overflow: hidden;
   scroll-snap-align: start;
   transition: transform 0.3s ease;
 }
-.banner:hover { transform: scale(1.02); }
 
 .banner img {
   width: 100%;
@@ -1081,38 +1511,43 @@ body {
   object-fit: cover;
 }
 
-/* === Категории (2 ряда) === */
+/* === Категории === */
 .categories-wrapper {
   overflow-x: auto;
   scrollbar-width: none;
-  padding-bottom: 10px;
+
+  /* ВЫТАСКИВАЕМ ИЗ КОНТЕЙНЕРА ТАКЖЕ КАК БАННЕРЫ */
+  margin-left: calc(-1 * var(--container-padding, 20px));
+  margin-right: calc(-1 * var(--container-padding, 20px));
+
+  padding: 0 20px;
+  scroll-padding-left: 20px;
+  scroll-padding-right: 20px;
 }
 .categories-wrapper::-webkit-scrollbar { display: none; }
 
 .categories {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(2, auto); /* два ряда */
-  grid-auto-columns: 110px;
-  gap: 20px 15px;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-columns: 100px;
+  gap: 16px 12px;
   scroll-snap-type: x mandatory;
-  justify-content: start;
   align-items: start;
+  justify-content: space-between;
 }
 
-/* Каждый элемент категории */
 .category {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
   scroll-snap-align: start;
 }
 
-/* Иконка в рамке */
 .category-img {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   border-radius: 16px;
   background: #F2F2F2;
   display: flex;
@@ -1127,44 +1562,15 @@ body {
   object-fit: contain;
 }
 
-.category-img:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-}
-
-/* Подпись */
 .category p {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   color: #111;
   margin-top: 8px;
   line-height: 1.3;
-  max-width: 110px;
+  max-width: 100px;
 }
 
-/* === Адаптив === */
-@media (max-width: 1024px) {
-  .banner { height: 200px; }
-  .categories { grid-auto-columns: 100px; gap: 16px 12px; }
-  .category-img { width: 100px; height: 100px; }
-  .category p { max-width: 100px; font-size: 12px; }
-}
-
-@media (max-width: 768px) {
-  .banner { flex: 0 0 85%; height: 180px; }
-  .categories { grid-auto-columns: 90px; gap: 14px 10px; }
-  .category-img { width: 90px; height: 90px; }
-  .category-img img { width: 50px; height: 50px; }
-  .category p { max-width: 90px; font-size: 11px; }
-}
-
-@media (max-width: 480px) {
-  .banner { flex: 0 0 90%; height: 160px; }
-  .categories { grid-auto-columns: 80px; gap: 12px 8px; }
-  .category-img { width: 80px; height: 80px; }
-  .category-img img { width: 60px; height: 60px; }
-  .category p { max-width: 80px; font-size: 11px; }
-}
 
 /* Прячем десктопное меню */
   .desktop-nav {
@@ -1249,6 +1655,7 @@ body {
   }
 
   .search__wrapper {
+    padding: 0px;
     background-color: #DCDCDC;
   }
   .search__input,
@@ -1312,7 +1719,6 @@ body {
 
   .mobile-nav {
     display: flex;
-    background-color: transparent;
     border-top: 1px solid #DBDBDB;
   }
 
@@ -1340,6 +1746,9 @@ body {
 
 /* 90.03 === Планшеты вертикально === */
 @media (max-width: 992px) {
+  .banners {
+    padding-top: 80px;
+  }
   .header {
     flex-direction: column;
     align-items: stretch;
@@ -1379,6 +1788,26 @@ body {
 
 /* 90.04 === Мобильные устройства === */
 @media (max-width: 768px) {
+  .banners {
+    gap: 5px;
+    padding-top: 70px;
+  }
+  .banner { 
+    flex: 0 0 85%; 
+    height: 180px;
+  }
+  .category-img { 
+    width: 90px; 
+    height: 90px; 
+  }
+  .category-img img { 
+    width: 50px; 
+    height: 50px; 
+  }
+  .category p { 
+    max-width: 90px; 
+    font-size: 11px; 
+  }
   .benefit {
     width: 300px;
     height: auto;
@@ -1452,9 +1881,24 @@ body {
 
 /* === Маленькие экраны (до 480px) === */
 @media (max-width: 480px) {
+  .banner { 
+    flex: 0 0 70%;
+    height: 140px;
+  }
+  .category-img { 
+    width: 80px; 
+    height: 80px; 
+  }
+  .category-img img { 
+    width: 60px; 
+    height: 60px; 
+  }
+  .category p { 
+    max-width: 80px; 
+    font-size: 11px; 
+  }
   .search__wrapper {
-    height: 40px;
-    padding: 1.5px;
+    height: 45px;
   }
   .search__input {
     font-size: 12px;
