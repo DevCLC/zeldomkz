@@ -148,6 +148,11 @@ html, body {
   --container-padding: 20px;
 }
 
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
 /* 20.00 - Global Page Container */
 .container {
@@ -177,7 +182,7 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 200;
+  z-index: 900;
   transition: transform 0.3s ease;
 }
 
@@ -487,7 +492,7 @@ html, body {
 /* Панель каталога */
 .catalog-panel {
   position: absolute;
-  top: 115px;
+  top: 100px;
   left: 0;
   width: 100%;
   height: calc(100vh - 85px);
@@ -1373,12 +1378,6 @@ html, body {
   display: flex;
   gap: 15px;
 }
-.hot-line{
-  background-color: #F2F2F2;
-  width: 100%;
-  height: 5px;
-  margin-top: 20px;
-}
 
 /* === 30.03 ЛЕНТА ПРЕИМУЩЕСТВ === */
 .benefits-section {
@@ -1463,6 +1462,12 @@ html, body {
 
 /* 90.02 === Основной весь адаптив ниже ноутбуков === */
 @media (max-width: 1024px) {
+  .hot-line{
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 5px;
+  margin-top: 20px;
+}
   .promo-section {
     display: none;
   }
