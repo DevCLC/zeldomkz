@@ -9,17 +9,12 @@ let switchTimer = null;
 catalogButton.addEventListener('click', () => {
   const isActive = catalogOverlay.classList.toggle('active');
   catalogButton.classList.toggle('active', isActive);
-  document.body.classList.toggle('catalog-open', isActive);
+  document.body.classList.toggle('catalog-open', isActive); // блокируем/разблокируем скролл
 
   if (isActive) {
-    // 🔹 Блокируем скролл главной страницы
-    document.body.style.overflow = 'hidden';
-
-    // 🔹 Разрешаем скролл каталога
-    catalogOverlay.style.overflowY = 'auto';
     catalogOverlay.style.pointerEvents = 'auto';
 
-    // 🔹 Показываем первую категорию при первом открытии
+    // показываем только первую категорию при первом открытии
     if (isFirstOpen && sidebarItems.length > 0) {
       setTimeout(() => {
         activateCategory(sidebarItems[0]);
@@ -27,10 +22,7 @@ catalogButton.addEventListener('click', () => {
       }, 50);
     }
   } else {
-    // 🔹 Разблокируем главный скролл
-    document.body.style.overflow = '';
     catalogOverlay.style.pointerEvents = 'none';
-
     sidebarItems.forEach(i => i.classList.remove('active'));
     subBlocks.forEach(sub => {
       sub.classList.remove('active');
@@ -40,16 +32,16 @@ catalogButton.addEventListener('click', () => {
   }
 });
 
-// 🔹 Закрытие при клике вне каталога
+// Клик вне панели закрывает каталог
 catalogOverlay.addEventListener('click', e => {
   if (e.target === catalogOverlay) {
     catalogOverlay.classList.remove('active');
     catalogButton.classList.remove('active');
-    document.body.classList.remove('catalog-open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('catalog-open'); // возвращаем скролл
     isFirstOpen = true;
   }
 });
+
 
 function activateCategory(item) {
   if (!item) return;
@@ -108,3 +100,4 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
