@@ -11,19 +11,20 @@ catalogButton.addEventListener('click', () => {
   catalogButton.classList.toggle('active', isActive);
   document.body.classList.toggle('catalog-open', isActive);
 
+  // 🔹 Управление скроллом главной страницы
+  document.body.style.overflow = isActive ? 'hidden' : '';
+
   if (isActive) {
-    // === Открытие каталога ===
     catalogOverlay.style.pointerEvents = 'auto';
 
     // показываем только первую категорию при открытии
     if (isFirstOpen && sidebarItems.length > 0) {
       setTimeout(() => {
-        activateCategory(sidebarItems[0]); // активируем первую категорию
+        activateCategory(sidebarItems[0]);
         isFirstOpen = false;
       }, 50);
     }
   } else {
-    // === Закрытие каталога ===
     catalogOverlay.style.pointerEvents = 'none';
     sidebarItems.forEach(i => i.classList.remove('active'));
     subBlocks.forEach(sub => {
@@ -33,6 +34,18 @@ catalogButton.addEventListener('click', () => {
     isFirstOpen = true;
   }
 });
+
+// 🔹 Также не забываем скролл при клике вне каталога
+catalogOverlay.addEventListener('click', e => {
+  if (e.target === catalogOverlay) {
+    catalogOverlay.classList.remove('active');
+    catalogButton.classList.remove('active');
+    document.body.classList.remove('catalog-open');
+    document.body.style.overflow = ''; // восстанавливаем скролл
+    isFirstOpen = true;
+  }
+});
+
 
 function activateCategory(item) {
   if (!item) return;
@@ -82,4 +95,25 @@ catalogOverlay.addEventListener('click', e => {
     document.body.classList.remove('catalog-open');
     isFirstOpen = true;
   }
+});
+
+// === Скрытие хедера при скролле ===
+let lastScroll = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll <= 0) {
+    header.classList.remove('hide');
+    return;
+  }
+
+  if (currentScroll > lastScroll && !header.classList.contains('hide')) {
+    header.classList.add('hide');
+  } else if (currentScroll < lastScroll && header.classList.contains('hide')) {
+    header.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
 });
