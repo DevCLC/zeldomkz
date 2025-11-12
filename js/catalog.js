@@ -64,15 +64,13 @@ function activateCategory(item) {
   }
 }
 
-// === Наведение / клик по категориям ===
+// === Клик по категориям ===
 sidebarItems.forEach(item => {
-  ['mouseenter', 'click'].forEach(event => {
-    item.addEventListener(event, () => {
-      if (!item.classList.contains('active')) {
-        if (switchTimer) clearTimeout(switchTimer);
-        switchTimer = setTimeout(() => activateCategory(item), 80);
-      }
-    });
+  item.addEventListener('click', () => {
+    if (!item.classList.contains('active')) {
+      if (switchTimer) clearTimeout(switchTimer);
+      switchTimer = setTimeout(() => activateCategory(item), 80);
+    }
   });
 });
 
