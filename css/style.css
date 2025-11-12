@@ -469,6 +469,13 @@ img {
 }
 
 /* === КАТАЛОГ === */
+
+/* === Блокировка скролла главной страницы при открытом каталоге === */
+body.catalog-open {
+  overflow: hidden; /* полностью убираем прокрутку страницы */
+  height: 100vh; /* фиксируем высоту, чтобы нельзя было прокрутить */
+}
+
 /* Затемнение фона */
 .catalog-overlay {
   position: fixed;
@@ -478,6 +485,8 @@ img {
   bottom: 0;
   opacity: 0;
   visibility: hidden;
+  overflow-y: auto; /* скролл только в каталоге */
+  -webkit-overflow-scrolling: touch;
   pointer-events: none;
   z-index: 200;
   transition: opacity 0.4s ease, visibility 0.4s ease;
