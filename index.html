@@ -127,47 +127,93 @@
 <div id="catalogContainer"></div>
 
 <!-- main content -->
-  <main>
-    <section class="promo-section">
-    <div class="slider">
-      <div class="slides">
-        <!-- Слайд 1 -->
-        <div class="slide" style="background-image:url('images/slider/slider1.png')">
-        </div>
-        <!-- Слайд 2 -->
-        <div class="slide" style="background-image:url('images/slider/slider2.png')">
+<main>
+<section class="promo-section">
+  <!-- Слайдер баннера -->
+  <div class="slider">
+    <div class="slides">
+      <div class="slide" style="background-image:url('images/slider/slider1.png')"></div>
+      <div class="slide" style="background-image:url('images/slider/slider2.png')"></div>
+    </div>
+    <button class="nav prev"><span class="arrow-left"></span></button>
+    <button class="nav next"><span class="arrow-right"></span></button>
+    <div class="dots"></div>
+  </div>
+
+  <!-- Слайдер карточек товаров -->
+  <aside class="product-slider">
+    <div class="product-slides">
+      <div class="product-card">
+        <div class="badge">Скидка</div>
+        <a href="https://www.zeldom.kz/products/3127-nutrifleks-t-15-8-25-3-5mgo-me/" target="_blank">
+          <img src="images/product-image/kompleksnye-udobreniya-nytriflecs-t-15-8-25+3.5mgo+me-drt-3127.webp" alt="Ультрамаг Супер Сера-900">
+          <div class="product-card-info">
+          <h3 class="product-name">Нутрифлекс Т 15-8-25+3,5MgO+ME</h3>
+          <span class="product-ru-en">-</span>
+          <span class="product-name-en">Nutriflex T 15-8-25+3.5MgO+ME</span>
+          </div>
+        </a>
+        <div class="product-flex">
+          <div class="product-flex-price">
+            <p class="old-price">42 500 ₸</p>
+            <p class="new-price">33 000 ₸</p>
+          </div>
+          <button class="add-btn">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
         </div>
       </div>
 
-      <button class="nav prev">
-      <span class="arrow-left"></span>
-    </button>
-    <button class="nav next">
-      <span class="arrow-right"></span>
-    </button>
-      <div class="dots"></div>
+      <div class="product-card">
+        <div class="badge hit">Хит</div>
+        <a href="https://www.zeldom.kz/products/3618-dzhoker-f1/">
+          <img src="images/product-image/tomat-joker-f1-vilmorin-3618.webp" alt="Ультрамаг Супер Сульфат">
+          <div class="product-card-info">
+          <h3 class="product-name">Джокер F1</h3>
+          <span class="product-ru-en">-</span>
+          <span class="product-name-en">Joker F1</span>
+          </div>
+        </a>
+        <div class="product-flex">
+          <div class="product-flex-price">
+            <p class="new-price">12 720 ₸</p>
+          </div>
+          <button class="add-btn">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="badge new">Новинка</div>
+        <div class="pre-order">Предзаказ</div>
+        <a href="https://www.zeldom.kz/products/4730-tyulpani-merkuriy/">
+          <img src="https://www.zeldom.kz/uploads_images/nabory-tyulpanov-tulipa-mercure-niderlandy-4730.webp" alt="Тюльпаны Меркурий">
+          <div class="product-card-info">
+          <h3 class="product-name">Тюльпаны Меркурий</h3>
+          <span class="product-ru-en">-</span>
+          <span class="product-name-en">Mercure</span>
+          </div>
+        </a>
+        <div class="product-flex">
+          <div class="product-flex-price">
+            <p class="new-price">5 500 ₸</p>
+          </div>
+          <button class="add-btn">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- Карточка товара -->
-    <aside class="product-card">
-      <div class="badge">Скидка</div>
-      <a href="https://www.zeldom.kz/products/4430-ultramag-super-sera-900/" target="_blank">
-      <img src="https://www.zeldom.kz/uploads_images/-ultramag-super-sera-900-shcholkovo_agrokhim-4430.webp" alt="Ультрамаг Супер Сера-900">
-      <h3>Ультрамаг Супер Сера-900</h3>
-      </a>
-      <div class="product-flex">
-        <div class="product-flex-price">
-          <p class="old-price">35 900 ₸</p>
-          <p class="new-price">21 365 ₸</p>
-        </div>
-
-        <button class="add-btn">
-          В корзину
-          <img src="images/cart.svg" alt="Корзина">
-        </button>
-      </div>
-    </aside>
-  </section>
+    <button class="nav-product prev product-prev"><span class="arrow-left"></span></button>
+    <button class="nav-product next product-next"><span class="arrow-right"></span></button>
+    <div class="dots product-dots"></div>
+  </aside>
+</section>
 
   <section class="promo-section-scroll">
 
@@ -244,17 +290,17 @@
       <div class="hot-card">
         <div class="hot-top">
           <div class="hot-img-box">
-            <img src="https://www.zeldom.kz/uploads_images/seeds-154769.webp" alt="">
-            <div class="hot-sale">-20%</div>
+            <div class="hot-sale">Скидка</div>
             <button class="hot-like"><img src="images/heart.svg" alt="Добавить в Избранное"></button>
+            <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/">
+            <img src="images/product-image/tomat-lidenza-f1-enzazaden-1756.webp" alt="Лиденза F1 (2020 года)">
           </div>
 
           <div class="hot-info">
             <div class="hot-name">
-            <span class="hot-name-ru">Томат Бенито F1</span>
-            <span class="hot-sep">-</span>
-            <span class="hot-name-en">Benito F1</span>
-          </div>
+            <span class="hot-name-ru">Лиденза F1 (2020 года)</span>
+            <span class="hot-name-en">Lidenza F1</span>
+          </div></a>
 
             <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
             
@@ -271,11 +317,14 @@
             <div class="hot-badge"><img src="images/delivery.svg" alt="Экспресс-Отправка">Экспресс-Отправка</div>
 
             <div class="hot-price-box">
-              <div class="hot-price">12 990₸</div>
-              <div class="hot-old">15 990₸</div>
+              <div class="hot-price">18 000 ₸</div>
+              <div class="hot-old">39 590 ₸</div>
             </div>
 
-            <button class="hot-add">В корзину</button>
+            <button class="hot-add">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
           </div>
         </div>
 
@@ -320,38 +369,40 @@
       <div class="hot-card">
         <div class="hot-top">
           <div class="hot-img-box">
-            <img src="https://www.zeldom.kz/uploads_images/seeds-154769.webp" alt="">
-            <div class="hot-sale">-20%</div>
+            <div class="hot-hit">Хит</div>
             <button class="hot-like"><img src="images/heart.svg" alt="Добавить в Избранное"></button>
+            <a href="https://www.zeldom.kz/products/4679-petuniya-gibridnaya-multiflora-selebriti-pink-morn-f1/">
+            <img src="images/product-image/petunia-petunia-hybrida-multiflora-celebrity-pink-morn-f1-benary-4679.webp" alt="Петуния гибридная мультифлора Селебрити Пинк Морн F1">
           </div>
 
           <div class="hot-info">
             <div class="hot-name">
-            <span class="hot-name-ru">Томат Бенито F1</span>
-            <span class="hot-sep">-</span>
-            <span class="hot-name-en">Benito F1</span>
-          </div>
+            <span class="hot-name-ru">Петуния гибридная мультифлора Селебрити Пинк Морн F1</span>
+            <span class="hot-name-en">Petunia hybrida multiflora Celebrity Pink Morn F1</span>
+          </div></a>
 
             <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
             
-              <div class="hot-rating" data-rating="4.8">
-                <div class="hot-rating-count">4.8</div>
+              <div class="hot-rating" data-rating="5.0">
+                <div class="hot-rating-count">5.0</div>
                 <img src="images/star.svg" class="star">
                 <img src="images/star.svg" class="star">
                 <img src="images/star.svg" class="star">
                 <img src="images/star.svg" class="star">
                 <img src="images/star.svg" class="star">
-                <span class="hot-review-count">3547</span>
+                <span class="hot-review-count">214</span>
               </div>
 
             <div class="hot-badge"><img src="images/delivery.svg" alt="Экспресс-Отправка">Экспресс-Отправка</div>
 
             <div class="hot-price-box">
-              <div class="hot-price">12 990₸</div>
-              <div class="hot-old">15 990₸</div>
+              <div class="hot-price">5 025 ₸</div>
             </div>
 
-            <button class="hot-add">В корзину</button>
+            <button class="hot-add">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
           </div>
         </div>
 
@@ -427,7 +478,10 @@
               <div class="hot-old">15 990₸</div>
             </div>
 
-            <button class="hot-add">В корзину</button>
+            <button class="hot-add">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
           </div>
         </div>
 
@@ -503,7 +557,10 @@
               <div class="hot-old">15 990₸</div>
             </div>
 
-            <button class="hot-add">В корзину</button>
+            <button class="hot-add">
+            В корзину
+            <img src="images/cart.svg" alt="Корзина">
+          </button>
           </div>
         </div>
 
