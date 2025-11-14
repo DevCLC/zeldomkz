@@ -1171,32 +1171,24 @@ body.catalog-open {
   width: 100%;
   gap: 20px;
   width: 100%;
+  align-items: flex-start; /* Свойство которое решила проблему 3ч */
   flex-wrap: nowrap;
-  cursor: grab;
-  user-select: none;
 }
-.hot-row:active {
-  cursor: grabbing;
-}
+
 .hot-wrapper::-webkit-scrollbar {
   display: none;
-}
-/* Поведение при перетаскивании */
-.hot-wrapper.grabbing,
-.hot-row:active {
-  cursor: grabbing;
-  user-select: none;
 }
 
 .hot-card {
   min-width: 250px;
-  min-height: 100%;
+  min-height: auto;
   flex-shrink: 0;
   background-color: #F7F7F7;
   border-radius: 15px;
   flex-direction: column;
   position: relative;
   transition: none;
+  overflow: visible;
 }
 
 .hot-nav {
@@ -1222,13 +1214,12 @@ body.catalog-open {
 
 .hot-img-box{
   position: relative;
-  padding-bottom: 10px;
-  width: 250px;
+  width: 275px;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 .hot-img-box img {
-  width: 250px;
+  width: 275px;
   height: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
@@ -1296,11 +1287,11 @@ body.catalog-open {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 15px 0;
 }
 
 .hot-name{
   display: flex;
-  gap: 6px;
   align-items: flex-start;
   margin: 0;
   flex-wrap: wrap;
@@ -1434,11 +1425,14 @@ body.catalog-open {
 /* Открывающийся блок */
 .hot-details {
   max-height: 0;
+  position: relative;
   overflow: hidden;
   opacity: 0;
   transform: translateY(-8px);
-  transition: .35s ease;
+  background-color: #F2F2F2;
+  transition: max-height .35s ease, opacity .35s ease, transform .35s ease, padding-top .35s ease;
   width: 100%;
+  z-index: 20;
   padding-top: 0;
 }
 .hot-card.open .hot-details {
@@ -1446,7 +1440,6 @@ body.catalog-open {
   opacity: 1;
   padding-top: 10px;
   transform: translateY(0);
-  background-color: #F2F2F2;
 }
 
 /* Сетка характеристик */

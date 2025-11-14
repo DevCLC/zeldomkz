@@ -108,26 +108,26 @@ document.querySelectorAll('.hot-rating').forEach(rating => {
   });
 });
 
-// === Раскрытие описания (только одно открытое) ===
+// Получаем все карточки
 const cards = document.querySelectorAll('.hot-card');
 
 cards.forEach(card => {
   const toggle = card.querySelector('.hot-toggle');
 
   toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // остановим всплытие
 
     // Закрываем все остальные карточки
     cards.forEach(c => {
       if (c !== card) c.classList.remove('open');
     });
 
-    // Переключаем текущее описание
+    // Переключаем текущую карточку
     card.classList.toggle('open');
   });
 });
 
-// === Закрытие при клике вне карточки ===
+// Закрытие карточек при клике вне них
 document.addEventListener('click', (e) => {
   cards.forEach(card => {
     if (!card.contains(e.target)) {
@@ -137,89 +137,41 @@ document.addEventListener('click', (e) => {
 });
 
 
-// Получаем элементы
-const hotWrapper = document.getElementById('hotWrapper');
-const hotRow = hotWrapper.querySelector('.hot-row');
-const hotLeft = document.querySelector('.hot-arrow.left');
-const hotRight = document.querySelector('.hot-arrow.right');
-const hotCards = hotRow.querySelectorAll('.hot-card');
-
-// === СИНХРОНИЗАЦИЯ ОПИСАНИЙ ===
-function closeAllDescriptions() {
-  document.querySelectorAll('.hot-card.open').forEach(card => {
-    card.classList.remove('open');
-  });
-}
-
-// === Прокрутка к следующей карточке ===
 function scrollNext() {
   const scrollLeft = hotWrapper.scrollLeft;
   for (let card of hotCards) {
-    if (card.offsetLeft > scrollLeft + 1) { // +1 для точности
+    if (card.offsetLeft > scrollLeft + 1) {
       hotWrapper.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
       break;
     }
   }
-  closeAllDescriptions();
 }
 
-// === Прокрутка к предыдущей карточке ===
+// Прокрутка к предыдущей карточке
 function scrollPrev() {
   const scrollLeft = hotWrapper.scrollLeft;
   for (let i = hotCards.length - 1; i >= 0; i--) {
     const card = hotCards[i];
-    if (card.offsetLeft < scrollLeft - 1) { // -1 для точности
+    if (card.offsetLeft < scrollLeft - 1) {
       hotWrapper.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
       break;
     }
   }
-  closeAllDescriptions();
+  // Здесь тоже НЕ вызываем closeAllDescriptions()
 }
 
-// События на стрелки
-hotRight.addEventListener('click', scrollNext);
-hotLeft.addEventListener('click', scrollPrev);
-
-// === Свайп пальцем ===
-let startXTouch = 0;
-let scrollLeftTouch = 0;
-let isTouching = false;
-
-hotWrapper.addEventListener('touchstart', e => {
-  isTouching = true;
-  startXTouch = e.touches[0].pageX;
-  scrollLeftTouch = hotWrapper.scrollLeft;
-}, { passive: true });
-
-hotWrapper.addEventListener('touchmove', e => {
-  if (!isTouching) return;
-  const x = e.touches[0].pageX;
-  const walk = (startXTouch - x);
-  hotWrapper.scrollLeft = scrollLeftTouch + walk;
-}, { passive: true });
-
+// Перетаскивание мышкой / свайп
 hotWrapper.addEventListener('touchend', () => {
   isTouching = false;
-  closeAllDescriptions();
-}, { passive: true });
-
-// === Перетаскивание мышкой ===
-let isDown = false;
-let startX = 0;
-let scrollLeft = 0;
-
-hotWrapper.addEventListener('mousedown', e => {
-  isDown = true;
-  startX = e.pageX;
-  scrollLeft = hotWrapper.scrollLeft;
-  hotWrapper.classList.add('grabbing');
+  // Убираем closeAllDescriptions()
 });
 
 document.addEventListener('mouseup', () => {
   isDown = false;
   hotWrapper.classList.remove('grabbing');
-  closeAllDescriptions();
+  // Убираем closeAllDescriptions()
 });
+
 
 hotWrapper.addEventListener('mousemove', e => {
   if (!isDown) return;
