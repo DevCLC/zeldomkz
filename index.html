@@ -130,14 +130,21 @@
 <main>
 <section class="promo-section">
   <!-- Слайдер баннера -->
-  <div class="slider">
+  <div class="slider"> 
     <div class="slides">
-      <div class="slide" style="background-image:url('images/slider/slider1.png')"></div>
-      <div class="slide" style="background-image:url('images/slider/slider2.png')"></div>
+      <div class="slide">
+        <img src="images/slider/slider1.webp" alt="Акция на семена овощей">
+      </div>
+      <div class="slide">
+        <img src="images/slider/slider2.png" alt="Лучшие сорта для огорода" loading="lazy">
+      </div>
+      <div class="slide">
+        <img src="images/slider/slider3.png" alt="Лучшие сорта для огорода" loading="lazy">
+      </div>
     </div>
-    <button class="nav prev"><span class="arrow-left"></span></button>
-    <button class="nav next"><span class="arrow-right"></span></button>
-    <div class="dots"></div>
+  <button class="nav prev"><span class="arrow-left"></span></button> 
+  <button class="nav next"><span class="arrow-right"></span></button> 
+  <div class="dots"></div>
   </div>
 
   <!-- Слайдер карточек товаров -->
@@ -149,7 +156,6 @@
           <img src="images/product-image/kompleksnye-udobreniya-nytriflecs-t-15-8-25+3.5mgo+me-drt-3127.webp" alt="Ультрамаг Супер Сера-900">
           <div class="product-card-info">
           <h3 class="product-name">Нутрифлекс Т 15-8-25+3,5MgO+ME</h3>
-          <span class="product-ru-en">-</span>
           <span class="product-name-en">Nutriflex T 15-8-25+3.5MgO+ME</span>
           </div>
         </a>
@@ -171,7 +177,6 @@
           <img src="images/product-image/tomat-joker-f1-vilmorin-3618.webp" alt="Ультрамаг Супер Сульфат">
           <div class="product-card-info">
           <h3 class="product-name">Джокер F1</h3>
-          <span class="product-ru-en">-</span>
           <span class="product-name-en">Joker F1</span>
           </div>
         </a>
@@ -193,7 +198,6 @@
           <img src="https://www.zeldom.kz/uploads_images/nabory-tyulpanov-tulipa-mercure-niderlandy-4730.webp" alt="Тюльпаны Меркурий">
           <div class="product-card-info">
           <h3 class="product-name">Тюльпаны Меркурий</h3>
-          <span class="product-ru-en">-</span>
           <span class="product-name-en">Mercure</span>
           </div>
         </a>
@@ -215,16 +219,8 @@
   </aside>
 </section>
 
+  <!-- Категории Mobile -->
   <section class="promo-section-scroll">
-
-  <!-- Баннеры -->
-  <div class="banners">
-    <div class="banner"><img src="images/slider/slider1.png" alt="Баннер 1"></div>
-    <div class="banner"><img src="images/slider/slider2.png" alt="Баннер 2"></div>
-    <div class="banner"><img src="images/slider/slider3.png" alt="Баннер 3"></div>
-  </div>
-
-  <!-- Категории (2 ряда, горизонтальный скролл) -->
   <div class="categories-wrapper">
     <div class="categories">
       <div class="category">
@@ -269,7 +265,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 <div class="hot-line"></div>
@@ -285,16 +280,14 @@
 
   <div class="hot-wrapper" id="hotWrapper">
     <div class="hot-row">
-
       <!-- КАРТОЧКА 1 -->
       <div class="hot-card">
         <div class="hot-top">
           <div class="hot-img-box">
-            <div class="hot-sale">Скидка</div>
+            <div class="hot-label hot-sale">Скидка</div>
             <button class="hot-like">
               <img src="images/heart.svg" alt="Добавить в Избранное">
             </button>
-
             <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
               <img src="images/product-image/tomat-lidenza-f1-enzazaden-1756.webp" alt="Лиденза F1 (2020 года)">
             </a>
@@ -307,79 +300,47 @@
               </div>
             </a>
             <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
-            
-              <div class="hot-rating" data-rating="4.8">
-                <div class="hot-rating-count">4.8</div>
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
+              <div class="hot-rating" data-rating="2.8">
+                <div class="hot-rating-count">2.8</div>
+                <div class="stars"></div>
                 <span class="hot-review-count">3547</span>
               </div>
-
-            <div class="hot-badge"><img src="images/delivery.svg" alt="Экспресс-Отправка">Экспресс-Отправка</div>
-
+            <div class="hot-badge">
+              <img src="images/delivery.svg" alt="">Экспресс-Отправка
+            </div>
             <div class="hot-price-box">
               <div class="hot-price">18 000 ₸</div>
               <div class="hot-old">39 590 ₸</div>
             </div>
-
             <button class="hot-add">
-            В корзину
-            <img src="images/cart.svg" alt="Корзина">
-          </button>
+              В корзину <img src="images/cart.svg" alt="Корзина">
+            </button>
           </div>
         </div>
 
-        <!-- Информацию о карточки -->
         <div class="hot-details">
           <ul class="hot-props">
-            <li>
-              <span class="hot-prop-icon">
-                <img src="images/product/tomato.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Сливовидный</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 2</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 3</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 4</span>
-            </li>
+            <li><img src="images/product/tomato.svg" alt=""><span>Сливовидный</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 2</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 3</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 4</span></li>
           </ul>
-
           <p>Ранний гибрид томата для открытого грунта с высокой урожайностью и отличным вкусом</p>
         </div>
         <button class="hot-toggle"></button>
-      </div><!-- /КАРТОЧКА 1 -->
+      </div>
 
       <!-- КАРТОЧКА 2 -->
       <div class="hot-card">
         <div class="hot-top">
           <div class="hot-img-box">
-            <div class="hot-sale">Скидка</div>
+            <div class="hot-label hot-new">Новинка</div>
+            <div class="hot-label hot-pre-order">Предзаказ</div>
             <button class="hot-like">
               <img src="images/heart.svg" alt="Добавить в Избранное">
             </button>
-
             <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
-              <img src="images/product-image/celosia-plumosa-glorius-yellow-benary-4797.webp" alt="Лиденза F1 (2020 года)">
+              <img src="images/product-image/celosia-plumosa-glorius-yellow-benary-4797.webp" alt="Целозия перистая Глориус Йеллоу">
             </a>
           </div>
           <div class="hot-info">
@@ -390,67 +351,133 @@
               </div>
             </a>
             <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
-            
-              <div class="hot-rating" data-rating="4.8">
-                <div class="hot-rating-count">4.8</div>
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
-                <img src="images/star.svg" class="star">
+              <div class="hot-rating" data-rating="3.5">
+                <div class="hot-rating-count">3.5</div>
+                <div class="stars"></div>
                 <span class="hot-review-count">3547</span>
               </div>
-
-            <div class="hot-badge"><img src="images/delivery.svg" alt="Экспресс-Отправка">Экспресс-Отправка</div>
-
+            <div class="hot-badge">
+              <img src="images/delivery.svg" alt="">Экспресс-Отправка
+            </div>
             <div class="hot-price-box">
               <div class="hot-price">7 990 ₸</div>
             </div>
-
             <button class="hot-add">
-            В корзину
-            <img src="images/cart.svg" alt="Корзина">
-          </button>
+              В корзину <img src="images/cart.svg" alt="Корзина">
+            </button>
           </div>
         </div>
 
-        <!-- Информацию о карточки -->
         <div class="hot-details">
           <ul class="hot-props">
-            <li>
-              <span class="hot-prop-icon">
-                <img src="images/product/tomato.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Сливовидный</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 2</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 3</span>
-            </li>
-
-            <li>
-              <span class="hot-prop-icon">
-                <img src="icon.svg" alt="">
-              </span>
-              <span class="hot-prop-text">Характеристика 4</span>
-            </li>
+            <li><img src="images/product/tomato.svg" alt=""><span>Сливовидный</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 2</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 3</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 4</span></li>
           </ul>
-
           <p>Ранний гибрид томата для открытого грунта с высокой урожайностью и отличным вкусом</p>
         </div>
         <button class="hot-toggle"></button>
-      </div><!-- /КАРТОЧКА 2 -->
-      
+      </div>
+
+      <!-- КАРТОЧКА 3 -->
+      <div class="hot-card">
+        <div class="hot-top">
+          <div class="hot-img-box">
+            <div class="hot-label hot-sale">Скидка</div>
+            <button class="hot-like">
+              <img src="images/heart.svg" alt="Добавить в Избранное">
+            </button>
+            <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
+              <img src="images/product-image/celosia-plumosa-glorius-yellow-benary-4797.webp" alt="Целозия перистая Глориус Йеллоу">
+            </a>
+          </div>
+          <div class="hot-info">
+            <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
+              <div class="hot-name">
+                <span class="hot-name-ru">Целозия перистая Глориус Йеллоу</span>
+                <span class="hot-name-en">Celosia plumosa Glorius Yellow</span>
+              </div>
+            </a>
+            <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
+              <div class="hot-rating" data-rating="4.8">
+                <div class="hot-rating-count">4.8</div>
+                <div class="stars"></div>
+                <span class="hot-review-count">3547</span>
+              </div>
+            <div class="hot-badge">
+              <img src="images/delivery.svg" alt="">Экспресс-Отправка
+            </div>
+            <div class="hot-price-box">
+              <div class="hot-price">7 990 ₸</div>
+            </div>
+            <button class="hot-add">
+              В корзину <img src="images/cart.svg" alt="Корзина">
+            </button>
+          </div>
+        </div>
+
+        <div class="hot-details">
+          <ul class="hot-props">
+            <li><img src="images/product/tomato.svg" alt=""><span>Сливовидный</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 2</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 3</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 4</span></li>
+          </ul>
+          <p>Ранний гибрид томата для открытого грунта с высокой урожайностью и отличным вкусом</p>
+        </div>
+        <button class="hot-toggle"></button>
+      </div>
+
+      <!-- КАРТОЧКА 4 -->
+      <div class="hot-card">
+        <div class="hot-top">
+          <div class="hot-img-box">
+            <div class="hot-label hot-sale">Скидка</div>
+            <button class="hot-like">
+              <img src="images/heart.svg" alt="Добавить в Избранное">
+            </button>
+            <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
+              <img src="images/product-image/celosia-plumosa-glorius-yellow-benary-4797.webp" alt="Целозия перистая Глориус Йеллоу">
+            </a>
+          </div>
+          <div class="hot-info">
+            <a href="https://www.zeldom.kz/products/1756-lidenza-f1-2020-goda/" target="_blank">
+              <div class="hot-name">
+                <span class="hot-name-ru">Целозия перистая Глориус Йеллоу</span>
+                <span class="hot-name-en">Celosia plumosa Glorius Yellow</span>
+              </div>
+            </a>
+            <img class="brand-logo" src="images/brand-logo/bejo.svg" alt="">
+              <div class="hot-rating" data-rating="4.8">
+                <div class="hot-rating-count">4.8</div>
+                <div class="stars"></div>
+                <span class="hot-review-count">3547</span>
+              </div>
+            <div class="hot-badge">
+              <img src="images/delivery.svg" alt="">Экспресс-Отправка
+            </div>
+            <div class="hot-price-box">
+              <div class="hot-price">7 990 ₸</div>
+            </div>
+            <button class="hot-add">
+              В корзину <img src="images/cart.svg" alt="Корзина">
+            </button>
+          </div>
+        </div>
+
+        <div class="hot-details">
+          <ul class="hot-props">
+            <li><img src="images/product/tomato.svg" alt=""><span>Сливовидный</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 2</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 3</span></li>
+            <li><img src="icon.svg" alt=""><span>Характеристика 4</span></li>
+          </ul>
+          <p>Ранний гибрид томата для открытого грунта с высокой урожайностью и отличным вкусом</p>
+        </div>
+        <button class="hot-toggle"></button>
+      </div>
+
 
     </div>
   </div>
@@ -532,6 +559,6 @@
     </a>
   </nav>
 
-<script src="js/script.js"></script>  
+<script src="js/script.js" defer></script>  
 </body>
 </html>

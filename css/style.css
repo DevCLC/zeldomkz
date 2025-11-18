@@ -153,6 +153,15 @@ img {
   user-select: none;
   -webkit-user-drag: none;
 }
+::selection {
+  background: #01A572;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #01A572;
+  color: #ffffff;
+}
 
 /* 20.00 - Global Page Container */
 .container {
@@ -634,7 +643,7 @@ body.catalog-open {
 /* сетка подкатегорий */
 .catalog-sub-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 32px;
 }
 
@@ -787,6 +796,38 @@ body.catalog-open {
 .catalog-sub-name:hover::after {
   left: 180%;
 }
+.catalog-brand {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-color: #ccc transparent;
+}
+
+/* Скроллбар для Chrome/Safari */
+.catalog-brand::-webkit-scrollbar {
+  height: 6px;
+}
+.catalog-brand::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
+}
+.catalog-brand::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.catalog-brand img {
+  height: 40px; /* выставь размер под свой дизайн */
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.catalog-brand img:hover {
+  transform: scale(1.1);
+}
+
 
 /*****************************
 30.01 - Block 1
@@ -800,31 +841,39 @@ body.catalog-open {
   margin-top: 100px;
 }
 
-/* Слайдер баннера */
 .slider {
   position: relative;
   overflow: hidden;
   width: 70%;
   border-radius: 16px;
-  flex: 1 1 60%;
   min-width: 300px;
   height: 500px;
-  display: flex;
-  flex-direction: column;
 }
 
 .slides {
   display: flex;
   height: 100%;
+  width: 100%;
   transition: transform 0.8s ease-in-out;
 }
 
 .slide {
-  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
-  height: 100%;
 }
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 /* Стрелки */
 .nav {
@@ -937,23 +986,23 @@ body.catalog-open {
   transform: translateX(-50%);
   display: flex;
   gap: 5px;
-  background-color: #49494930;
+  background-color: transparent;
   padding: 4px 10px;
   border-radius: 15px;
 }
 
 .product-slider .dots button {
-  width: 0.2vh;
-  height: 1.4vh;
+  width: 0.1px;
+  height: 12px;
   border-radius: 50%;
   border: none;
-  background: #ffffff52;
+  background: #1f1f1f24;
   cursor: pointer;
   transition: all 0.4s ease;
 }
 
 .product-slider .dots .active {
-  background: #ffffffba;
+  background: #037d5794;
 }
 
 .product-prev { left: -15px; }
@@ -1083,6 +1132,9 @@ body.catalog-open {
 /* 30.02 Горячие товары */
 .hot-section {
   position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .hot-title {
@@ -1168,9 +1220,9 @@ body.catalog-open {
 
 .hot-row {
   display: flex;
-  width: 100%;
   gap: 20px;
   width: 100%;
+  height: auto;
   align-items: flex-start; /* Свойство которое решила проблему 3ч */
   flex-wrap: nowrap;
 }
@@ -1182,6 +1234,8 @@ body.catalog-open {
 .hot-card {
   min-width: 250px;
   min-height: auto;
+  width: auto;
+  height: auto;
   flex-shrink: 0;
   background-color: #F7F7F7;
   border-radius: 15px;
@@ -1207,14 +1261,10 @@ body.catalog-open {
   display: flex;
 }
 
-.hot-top {
-  display: flex;
-  gap: 18px;
-}
-
 .hot-img-box{
   position: relative;
   width: 275px;
+  height: auto;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
@@ -1228,36 +1278,46 @@ body.catalog-open {
   border: 2px solid #01A572;
 }
 
-.hot-sale {
+/* Базовый стиль для всех меток */
+.hot-label {
   position: absolute;
   top: 0;
   left: 0;
+  font-weight: 600;
+  height: 35px;
+  padding: 15px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* Уникальные цвета и скругления */
+.hot-sale {
   background: #01A572;
   color: #fff;
-  font-weight: 600;
-  height: 35px;
-  padding: 15px;
-  width: auto;
   border-radius: 12px 0 12px 0;
-  display: flex;
-  align-items: center;
-  font-size: 13px;
 }
-.hot-hit{
+
+.hot-hit {
   background: #FF0000;
-  position: absolute;
-  top: 0;
-  left: 0;
   color: #fff;
-  font-weight: 600;
-  height: 35px;
-  padding: 15px;
-  width: auto;
   border-radius: 12px 0 12px 0;
-  display: flex;
-  align-items: center;
-  font-size: 13px;
 }
+
+.hot-new {
+  background: #FFD70A;
+  color: #1f1f1f;
+  border-radius: 12px 0 12px 0;
+}
+
+.hot-pre-order {
+  background: #FF7700;
+  color: #fff;
+  border-radius: 0 12px 12px 0;
+  margin-top: 40px;
+}
+
 
 /* LIKE */
 .hot-like img {
@@ -1306,6 +1366,9 @@ body.catalog-open {
 }
 .hot-name-en{ 
   color: #949494;
+}
+.hot-name:hover{
+  color: #008159;
 }
 
 .brand-logo { 
@@ -1540,6 +1603,8 @@ body.catalog-open {
   gap: 15px;
 }
 
+
+
 /* === 30.03 ЛЕНТА ПРЕИМУЩЕСТВ === */
 .benefits-section {
   overflow: hidden;
@@ -1732,7 +1797,6 @@ body.catalog-open {
   max-width: 100px;
 }
 
-
 /* Прячем десктопное меню */
   .desktop-nav {
     display: none;
@@ -1892,7 +1956,6 @@ body.catalog-open {
   .mobile-nav .header__nav-item:first-child img {
     filter: invert(45%) sepia(88%) saturate(511%) hue-rotate(117deg) brightness(96%) contrast(97%);
   }
-
   .header__logo picture,
   .header__logo img {
     display: block;
@@ -1901,9 +1964,7 @@ body.catalog-open {
     margin: 0;
     padding: 0;
   }
-
 }
-
 
 /* 90.03 === Планшеты вертикально === */
 @media (max-width: 992px) {
@@ -1915,14 +1976,12 @@ body.catalog-open {
     align-items: stretch;
     min-height: auto;
   }
-
   .header__top {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
   }
-
   .search {
     width: 100%;
     max-width: 100%;
@@ -1931,7 +1990,6 @@ body.catalog-open {
   .search__wrapper {
     height: 45px;
   }
-
   .search__input {
     font-size: 14px;
     padding: 0 12px;
@@ -1946,7 +2004,6 @@ body.catalog-open {
     display: block;
   }
 }
-
 /* 90.04 === Мобильные устройства === */
 @media (max-width: 768px) {
   .banners {
@@ -1978,20 +2035,16 @@ body.catalog-open {
     align-items: stretch;
     gap: 8px;
   }
-
   .header__logo img {
     height: 50px;
   }
-
   .header__catalog {
     display: none;
   }
-
   .search {
     width: 100%;
     max-width: 100%;
   }
-
   .mobile-nav {
     position: fixed;
     bottom: 0;
@@ -2039,7 +2092,6 @@ body.catalog-open {
     height: 32px;
   }
 }
-
 /* === Маленькие экраны (до 480px) === */
 @media (max-width: 480px) {
   .banner { 
