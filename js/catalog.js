@@ -9,7 +9,7 @@ let switchTimer = null;
 catalogButton.addEventListener('click', () => {
   const isActive = catalogOverlay.classList.toggle('active');
   catalogButton.classList.toggle('active', isActive);
-  document.body.classList.toggle('catalog-open', isActive); // блокируем/разблокируем скролл
+  document.body.classList.toggle('catalog-open', isActive);
 
   if (isActive) {
     catalogOverlay.style.pointerEvents = 'auto';
@@ -101,3 +101,14 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
+const brandContainer = document.querySelector('.catalog-brand');
+const arrowLeft = document.querySelector('.brand-arrow.left');
+const arrowRight = document.querySelector('.brand-arrow.right');
+
+arrowRight.addEventListener('click', () => {
+  brandContainer.scrollBy({ left: 200, behavior: 'smooth' });
+});
+
+arrowLeft.addEventListener('click', () => {
+  brandContainer.scrollBy({ left: -200, behavior: 'smooth' });
+});
